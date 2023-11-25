@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'gotham';
+    src: url('../fonts/GothamBook.otf');
+}
+@font-face {
+    font-family: 'gotham-medium';
+    src: url('../fonts/GothamMediumRegular.ttf');
+}
+@font-face {
+    font-family: 'gotham-bold';
+    src: url('../fonts/GothamBoldRegular.ttf');
+}
+.tit__man{
+   margin: 40px 0 70px 80px;
+   color:#626262;
+   font-family: 'gotham-medium';
+   font-size: 20px;
+}
+.hojas{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    color: #626262;
+    font-size: 20px;
+    margin: 0 60px 40px 0;
+}
+.flechas{
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    top: -12px;
+    gap: 8px;
+    margin-left: 15px;
+}
+.bi-arrow-left{
+    fill:#ce7386;
+    width: 30px;
+    height: 30px;
+}
+.bi-arrow-right{
+    fill:#b3345b;
+    border:1px solid #626262;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+}
+.manuales{
+    display: flex;
+    gap: 140px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.manual{
+    display: flex;
+    flex-direction: column;
+}
+.img__manual{
+    width: 150px;
+    height: 200px;
+}
+.btn__descarga{
+    font-family: 'gotham-medium';
+    background: #ce7386;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 100px;
+    height: 30px;
+    width: 150px;
+    margin: 20px 0 10px 0;
+    font-size: 16px;
+}
+.btn__ver{
+    font-family: 'gotham-medium';
+    color: #b3345b;
+    background: #f5f5f5;
+    border: 1px solid #b3345b;
+    border-radius: 100px;
+    height: 30px;
+    width: 150px;
+    font-size: 16px;
+}

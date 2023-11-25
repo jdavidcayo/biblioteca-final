@@ -4,29 +4,29 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
-
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
+            <div class="mb-4 font-medium text-sm text-crema">
                 {{ session('status') }}
             </div>
         @endif
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ route('password.email') }} " class="mt-3 mb-6">
             @csrf
+            
+            <div class="flex flex-col text-crema font-gothamBold p-2 items-center w-full">
+                <p class="font-gothamBold text-base">RESTABLECER CONTRASEÑA</p>
 
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <div class="flex flex-row items-center text-center rounded-full overflow-hidden border border-crema mt-2 w-full">
+                    <img src="{{ asset('assets/img/Sobre.png') }}" alt="Email logo" class="inputImg ml-3 h-8 p-1 ">
+                    <x-input id="email" type="email" name="email" :value="old('email')"  placeholder="CORREO ELECTRONICO" required autofocus autocomplete="off" class="w-full h-full ml-3 text-crema placeholder-gray-400 font-gothamMedium text-sm"/>
+                </div>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-center mt-4">
                 <x-button>
-                    {{ __('Email Password Reset Link') }}
+                    Restablecer contraseña
                 </x-button>
             </div>
         </form>

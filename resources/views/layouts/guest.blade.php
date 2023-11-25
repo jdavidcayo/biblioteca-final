@@ -11,10 +11,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
-        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
         @livewireStyles
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
+
     </head>
-    <body class="min-h-screen overflow-hidden loginImage">
+    <body class="min-h-screen overflow-auto loginImage">
         <div class="p-4 flex items-center justify-between">
             <a href="/">
                 <img src="{{ asset('assets/img/Logo-IEEG.png') }}" alt="Logo Instituto" class="w-40">
