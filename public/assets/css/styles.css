@@ -14,6 +14,10 @@
     src: url('../fonts/GothamBoldRegular.ttf');
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'gotham-bold';
+}
+
 .loginImage {
     width: 100%;
     height: 100vh;
@@ -55,3 +59,30 @@
 .noBorder {
     border-color: #6b728000 !important;
 }
+
+.cardEffect {
+    transition: transform 0.3s;
+}
+
+.cardEffect:hover {
+    transform: scale(1.05); 
+}
+
+.navLink {
+    transition: transform 0.5s;
+    border-bottom: 2px solid transparent;
+}
+
+.navLink:hover {
+    border-bottom: 2px solid #fffdff;
+    transform: scale(1.05); 
+}
+
+.limitedText {
+    width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+

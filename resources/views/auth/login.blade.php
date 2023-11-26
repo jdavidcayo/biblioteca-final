@@ -29,14 +29,14 @@
             <div class=" flex flex-col items-end p-1 mt-1">
                 @if (Route::has('password.request'))
                 <a class="underline text-sm text-crema rounded-md focus:outline-none focus:ring-1 focus:ring-rosado hover:text-blanco" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    Olvidaste tu contraseña?
                 </a>
                 @endif
             </div>
             
             <div class="flex flex-col mt-2 items-center ">
                 <x-button class="ms-4 mt-2 items-center ">
-                    {{ __('Log in') }}
+                    INICIAR SESIÓN
                 </x-button>
             </div>
         </form>
