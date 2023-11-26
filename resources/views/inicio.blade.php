@@ -99,57 +99,59 @@
     </div>
 
     {{-- Carousell --}}
-    <div id="carousel" class="carousel slide carousel-fade px-lg-5 my-2 d-flex align-items-center ">
-        <div class="carousel-inner mx-lg-5">
+    @if (count($capsulas) == 0)
+        {{-- No hay capsulas --}}
+    @else
+        <div id="carousel" class="carousel slide carousel-fade px-lg-5 my-2 d-flex align-items-center ">
+            <div class="carousel-inner mx-lg-5">
 
-            @forelse ($capsulas as $capsula)
-            <div class="carousel-item @if ($loop->first) active @endif">
-                <div class="card p-5 border-0">
-                    <div class="row">
+                @foreach ($capsulas as $capsula)
+                    <div class="carousel-item @if ($loop->first) active @endif">
+                        <div class="card p-5 border-0">
+                            <div class="row">
 
-                        <div class="col-md-6">
-                            <!-- Video -->
-                            <iframe width="100%" height="315" src="{{ $capsula->url }}}"
-                                frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Contenido derecho -->
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $capsula->titulo}}</h5>
-                                <p class="card-text">{{ $capsula->descripcion }}</p>
-                                <hr>
-                                <p class="card-text"><small class="text-muted">Octubre 19, 2023</small></p>
+                                <div class="col-md-6">
+                                    <!-- Video -->
+                                    <iframe width="100%" height="315" src="{{ $capsula->url }}}" frameborder="0"
+                                        allowfullscreen></iframe>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- Contenido derecho -->
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $capsula->titulo }}</h5>
+                                        <p class="card-text">{{ $capsula->descripcion }}</p>
+                                        <hr>
+                                        <p class="card-text"><small class="text-muted">Octubre 19, 2023</small></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                
+                @endforeach
+
             </div>
-            @empty
-                <h3>NO HAY CAPSULAS POR MOSTRAR</h3>
-            @endforelse
-
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark " aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bg-dark " aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     </div>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    </div>
-
+    
     <div class="container d-flex flex-column  align-items-center ">
-        <a href="{{ route('capsula.index'); }}">
-            <button type="button" id="irACapsulas"
-                class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
+        <a href="{{ route('capsula.index') }}">
+            <button type="button" id="irACapsulas" class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
                 VER MAS
             </button>
         </a>
     </div>
+    @endif
 
 
 @endsection

@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('capsulas', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->string('tema')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->unsignedInteger('tipo')->nullable();
+            $table->string('url');
+            $table->string('urlImagen')->nullable();
+            $table->unsignedInteger('estado')->default(1);
+            $table->unsignedInteger('autorId');
             $table->timestamps();
         });
     }

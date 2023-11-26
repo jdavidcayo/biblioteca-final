@@ -9,7 +9,8 @@ class InicioController extends Controller
 {
     public function index()
     {
-        $capsulas = Capsula::all();
+        $cantidad = 3;
+        $capsulas = $capsulas = Capsula::latest()->take($cantidad)->get();
 
         return view('inicio', compact('capsulas'));
     }
