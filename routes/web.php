@@ -12,7 +12,7 @@ Route::middleware([
         Route::get('/folleto', [App\Http\Controllers\FolletoController::class, 'index'])->name('folleto.index');
         Route::get('/formato', [App\Http\Controllers\FormatoController::class, 'index'])->name('formato.index');
         Route::get('/catalogo', [App\Http\Controllers\CatalogoController::class, 'index'])->name('catalogo.index');
-        Route::get('/documento', [App\Http\Controllers\DocumentoController::class, 'index'])->name('documento.index');
+        // Route::get('/documento', [App\Http\Controllers\DocumentoController::class, 'index'])->name('documento.index');
         Route::get('/compendio', [App\Http\Controllers\CompendioController::class, 'index'])->name('compendio.index');
         Route::get('/capsula', [App\Http\Controllers\CapsulaController::class, 'index'])->name('capsula.index');
     });

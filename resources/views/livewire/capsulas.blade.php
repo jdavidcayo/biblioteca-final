@@ -1,1 +1,3 @@
-<h1>Capsulas</h1>
+<div>
+    <p>Welcome to this beautiful admin panel.</p>
+</div>

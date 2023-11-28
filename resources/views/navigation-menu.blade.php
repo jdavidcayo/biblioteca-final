@@ -44,10 +44,6 @@
 
                         <x-slot name="content">
 
-                            <!-- Account Management -->
-                            {{-- <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
-                            </div> --}}
 
                             <x-dropdown-link href="{{ route('admin.home') }}">
                                 Panel
@@ -125,9 +121,9 @@
                 </li>
                 <li class="navLink">
 
-                    <a href="{{ route('documento.index') }}" class="text-decoration-none text-crema">
+                    {{-- <a href="{{ route('documento.index') }}" class="text-decoration-none text-crema"> --}}
                         DOCUMENTOS
-                    </a>
+                    {{-- </a> --}}
                 </li>
 
             </ul>
