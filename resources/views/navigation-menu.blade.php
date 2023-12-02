@@ -127,6 +127,12 @@
                 </li>
                 <li class="navLink">
 
+                    <a href="{{ route('compendio.index') }}" class="text-decoration-none text-crema">
+                        COMPENDIOS
+                    </a> 
+                </li>
+                <li class="navLink">
+
                     <a href="{{ route('capsula.index') }}" class="text-decoration-none text-crema">
                         CÁPSULAS
                     </a> 

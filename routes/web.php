@@ -20,6 +20,7 @@ Route::middleware([
         // Route::get('/catalogo', [App\Http\Controllers\CatalogoController::class, 'index'])->name('catalogo.index');
         Route::resource('catalogo', App\Http\Controllers\CatalogoController::class);
         Route::get('/documento', [App\Http\Controllers\DocumentoController::class, 'index'])->name('documento.index');
-        Route::get('/compendio', [App\Http\Controllers\CompendioController::class, 'index'])->name('compendio.index');
+        Route::resource('compendio', App\Http\Controllers\CompendioController::class);
+        // Route::get('/compendio', [App\Http\Controllers\CompendioController::class, 'index'])->name('compendio.index');
         Route::get('/capsula', [App\Http\Controllers\CapsulaController::class, 'index'])->name('capsula.index');
     });

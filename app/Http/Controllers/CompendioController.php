@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Compendio;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,15 @@ class CompendioController extends Controller
      */
     public function index()
     {
-        //
+        $criterios = Compendio::distinct()->pluck('criterio');
+
+        $anios = Compendio::distinct()->pluck('anio');
+
+        $autoridad = Compendio::distinct()->pluck('autor');
+
+
+        $compendios = Compendio::paginate(10);
+        return view("compendio.index", compact("compendios", "criterios","anios","autoridad"));
     }
 
     /**
