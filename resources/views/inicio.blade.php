@@ -144,10 +144,10 @@
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     </div>
     
-    <div class="container d-flex flex-column  align-items-center ">
+    <div class="container d-flex flex-column  align-items-center mb-6">
         <a href="{{ route('capsula.index') }}">
             <button type="button" id="irACapsulas" class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
-                VER MAS
+                VER MÁS
             </button>
         </a>
     </div>

@@ -1,17 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Manual;
 use Illuminate\Http\Request;
 
 class ManualController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $manuales = Manual::paginate(10);
+        return view("manual.index", compact("manuales"));
     }
 
     /**
@@ -35,7 +34,14 @@ class ManualController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $manual = Manual::find($id);
+
+        // Verifica si el manual existe
+        if (!$manual) {
+            abort(404); // Retorna un error 404 si el manual no se encuentra
+        }
+    
+        return view('manual.show', compact('manual'));
     }
 
     /**
