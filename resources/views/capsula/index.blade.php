@@ -1,9 +1,7 @@
 @extends('layouts.base')
-
 @section('content')
-    <div class="container">
-        <h3 class="text-secondary ">CAPSULAS INFORMATIVAS</h3>
-    </div>
+@section('titulo_seccion', 'CAPSULAS INFORMATIVAS')
+
     <div class="container mt-4">
 
         <div class="row">
@@ -24,9 +22,11 @@
         </div>
 
         @empty
-        <h4>NINGUN FOLLETO POR MOSTRAR</h4>
+        <h4>NINGUN CAPSULA POR MOSTRAR</h4>
         @endforelse
-
+        @section('pagination')
+        {{ $capsulas->links('pagination::simple-bootstrap-5') }}
+    @endsection
 
     </div>
     </div>

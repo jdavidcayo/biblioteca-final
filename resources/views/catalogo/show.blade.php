@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container">
-        <h3>Manuales</h3>
+        <h3>Catalogos</h3>
     </div>
     <div class="container d-flex flex-row justify-content-between ">
         <div class="d-flex flex-row">
-            <a href="{{ route('manual.index') }}" class="d-flex flex-row">
+            <a href="{{ route('catalogo.index') }}" class="d-flex flex-row">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill"
                     viewBox="0 0 16 16">
                     <path
@@ -36,14 +36,14 @@
     </div>
         <div class="container">
             <div class="d-flex flex-row justify-content-between ">
-                <h4>{{ $manual->titulo }}</h4>
-                <a href="#" download="{{ $manual->titulo . ".pdf"}}">
+                <h4>{{ $catalogo->titulo }}</h4>
+                <a href="#" download="{{ $catalogo->titulo . ".pdf"}}">
                     <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm" >DESCARGAR</button>
                 </a>
             </div>
             <hr>
             <div class="d-flex flex-column align-items-center ">
-                <iframe src="{{ asset($manual->urlPDF) }}" frameborder="0" width="80%" height="900px"></iframe>
+                <iframe src="{{ asset($catalogo->urlPDF) }}" frameborder="0" width="80%" height="900px"></iframe>
             </div>
         </div>
     @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Capsula;
+use App\Models\Folleto;
 use Illuminate\Http\Request;
 
 class FolletoController extends Controller
@@ -11,7 +13,8 @@ class FolletoController extends Controller
      */
     public function index()
     {
-        //
+        $folletos= Folleto:: paginate(10);
+        return view("folletos.index",compact("folletos"));
     }
 
     /**
@@ -35,7 +38,14 @@ class FolletoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $folleto = Folleto::find($id);
+
+        // Verifica si el folleto existe
+        if (!$folleto) {
+            abort(404);
+        }
+    
+        return view('folletos.index', compact('folleto'));
     }
 
     /**

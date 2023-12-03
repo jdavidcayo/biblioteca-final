@@ -1,9 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="container">
-        <h3 class="text-secondary ">MANUALES</h3>
-    </div>
+@section('titulo_seccion', 'FOLLETOS')
+
     <div class="container mt-4">
 
         <div class="row">
@@ -22,9 +21,9 @@
             @empty
                 <h4>NINGUN FOLLETO POR MOSTRAR</h4>
             @endforelse
-
-
-
+            @section('pagination')
+            {{ $folletos->links('pagination::simple-bootstrap-5') }}
+        @endsection
         </div>
     </div>
 
@@ -43,7 +42,7 @@
                             @empty
                                 <h3>NO HAY IMAGENES</h3>
                             @endforelse
-
+ 
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
                             data-bs-slide="prev">

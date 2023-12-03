@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formato;
 use Illuminate\Http\Request;
 
 class FormatoController extends Controller
@@ -11,7 +12,8 @@ class FormatoController extends Controller
      */
     public function index()
     {
-        //
+        $formatos = Formato::paginate(10);
+        return view("formatos.index", compact("formatos"));
     }
 
     /**

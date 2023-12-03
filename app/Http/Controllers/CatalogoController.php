@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Catalogo;
 use Illuminate\Http\Request;
 
 class CatalogoController extends Controller
@@ -11,7 +11,8 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        //
+        $catalogos = Catalogo::paginate(10);
+        return view("catalogo.index", compact("catalogos"));    
     }
 
     /**
@@ -35,9 +36,15 @@ class CatalogoController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $catalogo = Catalogo::find($id);
 
+        // Verifica si el catalogo existe
+        if (!$catalogo) {
+            abort(404);
+        }
+    
+        return view('catalogo.show', compact('catalogo'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

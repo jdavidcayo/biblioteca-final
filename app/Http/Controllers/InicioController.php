@@ -10,7 +10,7 @@ class InicioController extends Controller
     public function index()
     {
         $cantidad = 3;
-        $capsulas = $capsulas = Capsula::latest()->take($cantidad)->get();
+        $capsulas = Capsula::latest()->take($cantidad)->get();
 
         return view('inicio', compact('capsulas'));
     }

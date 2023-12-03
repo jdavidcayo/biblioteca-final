@@ -11,7 +11,7 @@ class CapsulaController extends Controller
 
     public function index()
     {
-        $capsulas = Capsula::all();
+        $capsulas = Capsula::paginate(10);
         return view('capsula.index', compact('capsulas'));
     }
 

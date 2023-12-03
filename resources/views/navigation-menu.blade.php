@@ -120,11 +120,22 @@
                 </li>
                 <li class="navLink">
 
-                    {{-- <a href="{{ route('documento.index') }}" class="text-decoration-none text-crema"> --}}
+                    <a href="{{ route('documento.index') }}" class="text-decoration-none text-crema">
                         DOCUMENTOS
-                    {{-- </a> --}}
+                    </a> 
                 </li>
+                <li class="navLink">
 
+                    <a href="{{ route('compendio.index') }}" class="text-decoration-none text-crema">
+                        COMPENDIOS
+                    </a> 
+                </li>
+                <li class="navLink">
+
+                    <a href="{{ route('capsula.index') }}" class="text-decoration-none text-crema">
+                        CÁPSULAS
+                    </a> 
+                </li>
             </ul>
         @endif
 
