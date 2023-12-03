@@ -70,8 +70,7 @@
                 </div>
 
                 {{-- search input --}}
-                <div
-                    class="flex flex-row items-center text-center rounded-pill  overflow-hidden border-none mt-2 bg-white h-8 ">
+                <div class="flex flex-row items-center text-center rounded-pill  overflow-hidden border-none mt-2 bg-white h-8 ">
                     <input type="text" autocomplete="off"
                         class="w-full h-full text-crema placeholder-gray-400 border-none" />
                     <img src="{{ asset('assets/img/Buscar.png') }}" alt="Logo usuario" class="h-8 border-none" />

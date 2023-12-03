@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UsuarioController extends Controller
 {
@@ -11,7 +12,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all();
+        return view('user.admin', compact('usuarios'));
     }
 
     /**
@@ -19,7 +21,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -27,7 +29,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -61,4 +63,6 @@ class UsuarioController extends Controller
     {
         //
     }
+
+    
 }

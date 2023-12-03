@@ -1,29 +1,58 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
-            {{ Form::label('name') }}
-            {{ Form::text('name', $user->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
-            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+
+            <input type="text" name="name" class="form-control" placeholder="NOMBRE">
         </div>
         <div class="form-group">
-            {{ Form::label('organizacion') }}
-            {{ Form::text('organizacion', $user->organizacion, ['class' => 'form-control' . ($errors->has('organizacion') ? ' is-invalid' : ''), 'placeholder' => 'Organizacion']) }}
-            {!! $errors->first('organizacion', '<div class="invalid-feedback">:message</div>') !!}
+            <input type="text" name="organizacion" class="form-control" placeholder="ORGANIZACIÓN">
         </div>
         <div class="form-group">
-            {{ Form::label('email') }}
-            {{ Form::text('email', $user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
-            {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
+            <input type="text" name="email" class="form-control" placeholder="EMAIL">
         </div>
         <div class="form-group">
-            {{ Form::label('rol') }}
-            {{ Form::text('rol', $user->rol, ['class' => 'form-control' . ($errors->has('rol') ? ' is-invalid' : ''), 'placeholder' => 'Rol']) }}
-            {!! $errors->first('rol', '<div class="invalid-feedback">:message</div>') !!}
+            @isset($user)
+                <input type="hidden" id="pwd" name="password" value="{{ $user->password }}" class="form-control"
+                    placeholder="CONTRASEÑA" readonly>
+                <button type="text" class="btn btn-outline-primary" id="btnGenerar">GENERAR</button>
+            @else
+                <input type="text" id="pwd" name="password" class="form-control" placeholder="CONTRASEÑA">
+                <button type="button" class="btn btn-outline-primary mt-2" id="btnGenerar">GENERAR</button>
+            @endisset
+
+        </div>
+        <div class="form-group">
+            <select name="rol" id="rolInput" class="form-control">
+                <option value="user">USUARIO</option>
+                <option value="admin">ADMINISTRADOR</option>
+            </select>
         </div>
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+
+        <button type="submit" class="btn btn-primary block">
+            {{ isset($user) ? 'Actualizar' : 'Crear' }} Usuario
+        </button>
     </div>
+
+    <script>
+        let btnGenerar = document.getElementById('btnGenerar');
+        let pwd = document.getElementById('pwd');
+        const csrfToken = '{{ csrf_token() }}';
+        const url = '{{ route('admin.generate-password') }}';
+
+
+        btnGenerar.addEventListener('click', async () => {
+            let res = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Content-Type': 'application/json'
+                },
+            })
+            console.log(res)
+        });
+    </script>
 </div>

@@ -1,30 +1,41 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
-@section('template_title')
-    {{ __('Create') }} User
-@endsection
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+<section class="content container ">
+    <div class="row">
+        <div class="col-md-12 ">
 
-                @includeif('partials.errors')
+            @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} User</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('usuario.store') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+            <div class="card card-default col-md-6">
+                <div class="card-header">
+                    <span class="card-title">{{ __('Create') }} User</span>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('usuarios.store') }}"  role="form" enctype="multipart/form-data">
+                        @csrf
 
-                            @include('user.form')
+                        @include('user.form')
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-@endsection
+    </div>
+</section>
+
+@stop
+
+@section('css')
+    
+@stop
+
+@section('js')
+    
+@stop

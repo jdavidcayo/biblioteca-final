@@ -13,8 +13,10 @@ use App\Http\Controllers\UsuarioController;
 
 
 Route::get('/', [Homecontroller::class, 'index'])->name('admin.home');
+Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
 
 Route::get('/capsulas', [CapsulaController::class, 'admin'])->name('capsula.admin');
+
 
 Route::resource('/capsulas', CapsulaController::class)->except('index', 'admin');
 
@@ -23,6 +25,7 @@ Route::get('/compendios', [CompendioController::class, 'admin'])->name('compendi
 // Route::get('/documentos', [DocumentoController::class, 'admin'])->name('documento.admin');
 Route::get('/folletos', [FolletoController::class, 'admin'])->name('folleto.admin');
 Route::get('/manuales', [ManualController::class, 'admin'])->name('manual.admin');
-Route::get('/usuarios', [UsuarioController::class, 'admin'])->name('usuario.admin');
+// Route::get('/usuarios', [UsuarioController::class, 'admin'])->name('usuario.admin');
+Route::resource('/usuarios', UsuarioController::class);
 
 

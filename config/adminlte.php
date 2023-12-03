@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Biblioteca digital',
+    'title' => '',
     'title_prefix' => '',
     'title_postfix' => '',
 
