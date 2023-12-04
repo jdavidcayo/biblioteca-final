@@ -26,8 +26,9 @@
                         </div>
                         <div class="form-group">
                             <label for="descripcion">{{ __('Descripción') }}</label>
-                            <input type="text" name="descripcion" class="form-control"
-                                value="{{ $capsula->descripcion }}" readonly>
+                            <input type="text" name="descripcion" id="descripcion" 
+                                value="{{ $capsula->descripcion }}" readonly hidden>
+                                <trix-editor input="descripcion" readonly></trix-editor>
                         </div>
                         <div class="form-group">
                             <label for="url">{{ __('Url') }}</label>
@@ -63,10 +64,10 @@
 @stop
 
 @section('css')
-
-
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href=" {{ asset('assets/css/trix.css') }}">
 @stop
 
 @section('js')
-
+    <script src="{{ asset('assets/js/trix.umd.min.js') }}"></script>
 @stop

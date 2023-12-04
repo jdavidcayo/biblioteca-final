@@ -1,72 +1,96 @@
 @extends('adminlte::page')
 
-@section('title', 'Capsula informativa')
+@section('title', 'Capsulas')
 
 @section('content_header')
-
+    
 @stop
 
 @section('content')
+<section class="content container-fluid">
+    <div class="row flex justify-content-center">
+        <div class="col-md-10">
+            <h2 class="text-secondary my-2 px-2" style="background-color: #fcd5c9">Capsulas</h2>
 
-    <a href="{{ route('capsula.admin') }}" class="btn btn-outline-primary">VOLVER</a>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Detalles de capsula</div>
+            <div class="card card-default">
+                <div class="card-header bg-admin-card-title ">
+                    <span class="card-title font-gothamBold">NUEVO ELEMENTO</span>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('capsulas.update', $capsula->id) }}" role="form"
+                        enctype="multipart/form-data">
+                        @method('PUT')
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('capsulas.update', $capsula->id ) }}" role="form"
-                            enctype="multipart/form-data">
-                            @method('PUT')
-                            @csrf
-                            <div class="form-group">
-                                <label for="titulo">{{ __('Titulo') }}</label>
-                                <input type="text" name="titulo" class="form-control" value="{{ $capsula->titulo }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="tema">{{ __('Tema') }}</label>
-                                <input type="text" name="tema" class="form-control" value="{{ $capsula->tema }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="descripcion">{{ __('Descripción') }}</label>
-                                <input type="text" name="descripcion" class="form-control"
-                                    value="{{ $capsula->descripcion }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="url">{{ __('Url') }}</label>
-                                <input type="text" name="url" class="form-control" value="{{ $capsula->url }}">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="estado">{{ __('Estado') }}</label>
-
-                                <input type="text" name="estado" class="form-control"
-                                    value="@if ($capsula->estado == 1) Activo @elseif ($capsula->estado == 0) Borrador @endif  ">
-                            </div>
-
-                            
-                            <div>
-                                <a href="{{ route('capsula.admin') }}"></a>
-                                <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                        <div class="box box-info padding-1">
+                            <div class="box-body">
+                                
+                                <div class="form-group">
+                                    <label class="text-secondary">Titulo</label>
+                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" required value="{{ $capsula->titulo }}">
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label class="text-secondary">Síntesis</label>
+                                    <input type="text" name="descripcion" id="descripcion" value="{{ $capsula->descripcion }}"  hidden>
+                                    <trix-editor input="descripcion"></trix-editor>
+                                </div>
+                                
+                                <div class="form-group d-flex flex-col justify-content-between mt-4">
+                                    <div class="item-fecha">
+                                        <label class="text-secondary">Fecha</label>
+                                        <input type="date" name='fecha' class="form-control" placeholder="Fecha">
+                                    </div>
+                                    <div class="item-estado">
+                                        <label class="text-secondary">Estado</label>
+                                        <select name="estado" id="idSelect" class="form-control">
+                                            <option value="1">Activo</option>
+                                            <option value="0">Borrador</option>
+                                        </select>
+                                    </div>
+                                    <div class="item-archivo">
+                                        <label class="text-secondary">imagen</label>
+                                        <input type="file" name="urlImagen" id="urlImagen" class="form-control" value="{{ $capsula->urlImagen}}">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="text-secondary">Enlace</label>
+                                    <input type="text" name='url' class="form-control" placeholder="Url" value="{{ $capsula->url }}">
+                                </div>
+                                
                             </div>
-                        </form>
+                            <div class="box-footer mt20">
+                                <button type="submit" class="btn btn-primary">CREAR</button>
+                                <a href="{{ route( "capsula.admin" )}}" class="btn btn-secondary">CANCELAR</a>
+                            </div>
+                            
+                        </div>
 
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
 @stop
 
 @section('css')
-
-
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href=" {{ asset('assets/css/trix.css') }}">
+    <link rel="stylesheet" href=" {{ asset('assets/css/styles.css') }}">
 @stop
 
 @section('js')
+    <script src="{{ asset('assets/js/trix.umd.min.js') }}"></script>
 
+<script>
+
+    document.addEventListener("trix-initialize", function(event) {
+        var trix = event.target;
+        trix.toolbarElement.querySelector(".trix-button-group--file-tools").style.display = "none";
+    });
+
+</script>
 @stop
+

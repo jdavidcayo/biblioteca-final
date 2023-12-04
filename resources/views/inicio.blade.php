@@ -119,7 +119,7 @@
                                     <!-- Contenido derecho -->
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $capsula->titulo }}</h5>
-                                        <p class="card-text">{{ $capsula->descripcion }}</p>
+                                        <p class="card-text">{!! $capsula->descripcion !!}</p>
                                         <hr>
                                         <p class="card-text"><small class="text-muted">Octubre 19, 2023</small></p>
                                     </div>
@@ -142,6 +142,26 @@
         </div>
         <script src="{{ asset('assets/js/popper.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+
+        <script>
+            // Carousel video playback
+            let iframes = document.querySelectorAll('iframe');
+            let iframesSrc = [];
+            iframes.forEach(iframe => {
+                iframesSrc.push(iframe.src);
+            });
+            document.querySelector('#carousel').addEventListener('slide.bs.carousel', function(e) {
+                iframes.forEach(iframe => {
+                    let temp = iframe.src;
+                    iframe.src = '';
+                    iframe.src = temp;
+                });
+                
+            });
+            
+
+        </script>
+
     </div>
     
     <div class="container d-flex flex-column  align-items-center mb-6">

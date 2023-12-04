@@ -13,7 +13,7 @@ use App\Http\Controllers\UsuarioController;
 
 
 Route::get('/', [Homecontroller::class, 'index'])->name('admin.home');
-Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
+// Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
 
 Route::get('/capsulas', [CapsulaController::class, 'admin'])->name('capsula.admin');
 

@@ -1,3 +1,15 @@
+.bg-admin-card-title {
+    background-color: #f13361;
+    color: white;
+}
+.bg-admin-section-title {
+    background-color: #fcd5c9;
+}
+.bg-btn-red {
+    background-color: #f13361;
+    color: white;
+}
+
 
 @font-face {
     font-family: 'gotham';
@@ -85,4 +97,12 @@ h1, h2, h3, h4, h5, h6 {
     text-overflow: ellipsis; 
 }
 
-
+.item-fecha {
+    width: 200px;
+}
+.item-estado {
+    width: 200px;
+}
+.item-archivo {
+    width: 400px;
+}
