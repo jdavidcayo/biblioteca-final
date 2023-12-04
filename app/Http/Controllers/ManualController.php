@@ -1,24 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Manual;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use App\Models\Manual;
+use App\Models\Usuario;
 
 class ManualController extends Controller
 {
 
     public function index()
     {
-        $manuales = Manual::paginate(10);
+        $manuales = Manual::paginate(20);
         return view("manual.index", compact("manuales"));
     }
 
+    public function admin() 
+    {
+        $manuales = Manual::paginate(20);
+        return view("manual.admin", compact("manuales"));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view("manual.create");
     }
 
     /**
@@ -26,7 +36,45 @@ class ManualController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $manual = new Manual();
+        $manual->titulo = $request->titulo;
+        $manual->fecha = $request->fecha;
+        $manual->estado = $request->estado;
+        $manual->autorId = $request->user()->id;
+        
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/manuales/" , $name);
+    
+        $imagePath = storage_path("app/public/manuales/" .$name);
+        $resizedImage = Image::make($imagePath)->fit(320, 320);
+        $resizedImage->save(storage_path("app/public/manuales/" . $name));        
+        $manual->urlImagen = "storage/manuales/" . $name;
+
+        }
+        
+        else{
+            $manual->urlImagen = "assets/img/ICONO-Folletos.png";
+        }
+
+        if ($request->hasFile("urlDocumento")) {
+            $file = $request->file("urlDocumento");
+
+            $name = time() . "-" . $request->file("urlDocumento")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/manuales/" , $name);
+    
+        $manual->urlDocumento = "storage/manuales/" . $name;
+
+        }
+
+        $manual->save();
+        return redirect()->route('manual.admin');
     }
 
     /**
@@ -36,9 +84,8 @@ class ManualController extends Controller
     {
         $manual = Manual::find($id);
 
-        // Verifica si el manual existe
         if (!$manual) {
-            abort(404); // Retorna un error 404 si el manual no se encuentra
+            abort(404); 
         }
     
         return view('manual.show', compact('manual'));
@@ -49,7 +96,8 @@ class ManualController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $manual = Manual::find($id);
+        return view("manual.edit", compact("manual"));
     }
 
     /**
@@ -57,7 +105,44 @@ class ManualController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $manual = Manual::find($id);
+        $manual->titulo = $request->titulo;
+        $manual->fecha = $request->fecha;
+        $manual->estado = $request->estado;
+        
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/manuales/" , $name);
+    
+        $imagePath = storage_path("app/public/manuales/" .$name);
+        $resizedImage = Image::make($imagePath)->fit(320, 320);
+        $resizedImage->save(storage_path("app/public/manuales/" . $name));        
+        $manual->urlImagen = "storage/manuales/" . $name;
+
+        }
+        
+        else{
+            $manual->urlImagen = "assets/img/ICONO-Folletos.png";
+        }
+
+        if ($request->hasFile("urlDocumento")) {
+            $file = $request->file("urlDocumento");
+
+            $name = time() . "-" . $request->file("urlDocumento")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/manuales/" , $name);
+    
+        $manual->urlDocumento = "storage/manuales/" . $name;
+
+        }
+
+        $manual->save();
+        return redirect()->route('manual.admin');
     }
 
     /**
@@ -65,6 +150,8 @@ class ManualController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $manual = Manual::find($id);
+        $manual->delete();
+        return redirect()->route('manual.admin');
     }
 }

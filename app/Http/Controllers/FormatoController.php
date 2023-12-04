@@ -12,8 +12,14 @@ class FormatoController extends Controller
      */
     public function index()
     {
-        $formatos = Formato::paginate(10);
-        return view("formatos.index", compact("formatos"));
+        $formatos = Formato::paginate(20);
+        return view("formato.index", compact("formatos"));
+    }
+
+    public function admin()
+    {
+        $formatos = Formato::paginate(20);
+        return view("formato.admin", compact("formatos"));
     }
 
     /**
@@ -21,7 +27,7 @@ class FormatoController extends Controller
      */
     public function create()
     {
-        //
+        return view("formato.create");
     }
 
     /**

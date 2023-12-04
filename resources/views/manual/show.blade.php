@@ -16,7 +16,7 @@
             </a>
         </div>
 
-        <div class="">
+        {{-- <div class="">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -31,19 +31,19 @@
                 <path fill-rule="evenodd"
                     d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
             </svg>
-        </div>
+        </div> --}}
 
     </div>
-        <div class="container">
-            <div class="d-flex flex-row justify-content-between ">
-                <h4>{{ $manual->titulo }}</h4>
-                <a href="#" download="{{ $manual->titulo . ".pdf"}}">
-                    <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm" >DESCARGAR</button>
-                </a>
-            </div>
-            <hr>
-            <div class="d-flex flex-column align-items-center ">
-                <iframe src="{{ asset($manual->urlPDF) }}" frameborder="0" width="80%" height="900px"></iframe>
-            </div>
+    <div class="container">
+        <div class="d-flex flex-row justify-content-between mb-2">
+            <h4>{{ $manual->titulo }}</h4>
+            <a href="{{ asset($manual->urlDocumento) }}" download="{{ $manual->titulo . '.pdf' }}">
+                <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm">DESCARGAR</button>
+            </a>
         </div>
-    @endsection
+        <hr>
+        <div class="d-flex flex-column align-items-center mt-4">
+            <iframe src="{{ asset($manual->urlDocumento) }}" frameborder="0" width="80%" height="900px"></iframe>
+        </div>
+    </div>
+@endsection

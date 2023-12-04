@@ -9,10 +9,10 @@
             @forelse ( $manuales as $manual)
             <div class="col-lg-3 col-md-6 mb-4 cardEffect">
                 <div class="card align-items-center border-0" style="width: 100%;">
-                    <img src="{{ $manual->urlThumb }}" class="" alt="Manual img" width="100px" height="150px">
+                    <img src="{{ $manual->urlImagen }}" class="" alt="Manual img" width="100px" height="150px">
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item">
-                            <a href="{{ $manual->urlPDF }}" download="{{ $manual->titulo . ".pdf" }}">
+                            <a href="{{ $manual->urlDocumento }}" download="{{ $manual->titulo . ".pdf" }}">
                                 <button type="button"
                                 class="btn btn-warning text-morado hover:text-white btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>

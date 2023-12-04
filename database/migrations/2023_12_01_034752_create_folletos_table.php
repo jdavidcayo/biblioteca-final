@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('folletos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('url')->nullable();
+            $table->string('urlImagen')->nullable();
+            $table->string('urlImagenThumb')->nullable();
+            $table->date('fecha')->nullable();
+            $table->unsignedInteger('estado')->default(1);
+            $table->unsignedInteger('autorId')->nullable();
             $table->timestamps();
         });
     }

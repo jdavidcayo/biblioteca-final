@@ -31,8 +31,8 @@ class CapsulaController extends Controller
 
     public function show($id)
     {
-        $capsula = Capsula::find($id);
-        return view('capsula.show', compact('capsula'));
+        // $capsula = Capsula::find($id);
+        // return view('capsula.show', compact('capsula'));
     }
 
     public function edit($id)

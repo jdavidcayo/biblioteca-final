@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Capsula;
 use App\Models\Folleto;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class FolletoController extends Controller
 {
@@ -13,16 +14,23 @@ class FolletoController extends Controller
      */
     public function index()
     {
-        $folletos= Folleto:: paginate(10);
-        return view("folletos.index",compact("folletos"));
+        $folletos= Folleto::paginate(20);
+        return view("folleto.index",compact("folletos"));
     }
+
+    public function admin()
+    {
+        $folletos= Folleto::paginate(20);
+        return view("folleto.admin",compact("folletos"));
+    }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view("folleto.create");
     }
 
     /**
@@ -30,7 +38,35 @@ class FolletoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $folleto = new Folleto();
+        $folleto->titulo = $request->titulo;
+        $folleto->fecha = $request->fecha;
+        $folleto->estado = $request->estado;
+        $folleto->autorId = $request->user()->id;
+        
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/folletos/" , $name);
+    
+        $imagePath = storage_path("app/public/folletos/" .$name);
+        $resizedImage = Image::make($imagePath)->fit(320, 320);
+        $resizedImage->save(storage_path("app/public/folletos/" . "thumb-" . $name ));        
+        $folleto->urlImagen = "storage/folletos/" . $name;
+        $folleto->urlImagenThumb = "storage/folletos/" . "thumb-" . $name;
+
+        }
+        
+        else{
+            $folleto->urlImagen = "assets/img/ICONO-Folletos.png";
+        }
+
+        $folleto->save();
+        return redirect()->route('folleto.admin');
     }
 
     /**
@@ -53,7 +89,8 @@ class FolletoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $folleto = Folleto::find($id);
+        return view('folleto.edit', compact('folleto'));
     }
 
     /**
@@ -61,14 +98,43 @@ class FolletoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $folleto = Folleto::find($id);
+        $folleto->titulo = $request->titulo;
+        $folleto->fecha = $request->fecha;
+        $folleto->estado = $request->estado;
+        
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/folletos/" , $name);
+    
+        $imagePath = storage_path("app/public/folletos/" .$name);
+        $resizedImage = Image::make($imagePath)->fit(320, 320);
+        $resizedImage->save(storage_path("app/public/folletos/" . "thumb-" . $name ));        
+        $folleto->urlImagen = "storage/folletos/" . $name;
+        $folleto->urlImagenThumb = "storage/folletos/" . "thumb-" . $name;
+
+        }
+        
+        else{
+            $folleto->urlImagen = "assets/img/ICONO-Folletos.png";
+        }
+
+        $folleto->save();
+        return redirect()->route('folleto.admin');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    { 
+        $folleto = Folleto::find($id);
+        $folleto->delete();
+        return redirect()->route('folleto.admin');
+    
     }
 }

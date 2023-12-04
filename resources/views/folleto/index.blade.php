@@ -11,7 +11,7 @@
                 <div class="col-lg-3 col-md-6 mb-4 cardEffect">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#miModal">
                         <div class="card align-items-center border-0 " style="width: 100%;">
-                            <img src="{{ $folleto->url }}" class="" alt="Manual img" width="200px" height="200px">
+                            <img src="{{ $folleto->urlImagenThumb }}" class="" alt="Manual img" width="200px" height="200px">
                             <h6 class="limitedText text-secondary mt-2"> {{ $folleto->titulo }}</h6>
                         </div>
                     </a>
@@ -35,10 +35,12 @@
 
                     <div id="carousel" class="carousel slide">
                         <div class="carousel-inner">
-                            @forelse ($folletos as $follet)
+                            @forelse ($folletos as $folleto)
                                 <div class="carousel-item @if ($loop->first) active @endif">
-                                    <img src="{{ $follet->url }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset($folleto->urlImagen) }}" class="d-block w-100" alt="...">
                                 </div>
+                                
+                
                             @empty
                                 <h3>NO HAY IMAGENES</h3>
                             @endforelse

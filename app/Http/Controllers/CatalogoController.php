@@ -15,6 +15,11 @@ class CatalogoController extends Controller
         return view("catalogo.index", compact("catalogos"));    
     }
 
+    public function admin()
+    {
+        // $catalogos = Catalogo::paginate(10);
+        // return view("catalogo.index", compact("catalogos"));    
+    }
     /**
      * Show the form for creating a new resource.
      */
