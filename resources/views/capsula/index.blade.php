@@ -13,7 +13,7 @@
                             <img src="{{ $capsula->urlImagen }}" class="" alt="Capsula thumbnail" width="200px"
                             height="200px">
                             <h6 class="limitedText text-secondary mt-2 mb-0 "> {{ $capsula->titulo }}</h6>
-                            <p class="text-secondary fs-xxsm text-decoration-none ">Noviembre 19 de 2023</p>
+                            <p class="text-secondary fs-xxsm text-decoration-none ">{{ $capsula->fecha }}</p>
                             <span id="url" hidden>{{ $capsula->url }}</span>
                             <p id="capsulaDescription" hidden>{{ $capsula->descripcion }}</p>
                         </div>

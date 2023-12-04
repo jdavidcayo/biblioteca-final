@@ -13,13 +13,12 @@
             <h2 class="text-secondary my-2 px-2" style="background-color: #fcd5c9">Capsulas</h2>
 
             <div class="card card-default">
-                <div class="card-header bg-admin-card-title ">
-                    <span class="card-title font-gothamBold">NUEVO ELEMENTO</span>
-                </div>
+            
                 <div class="card-body">
                     <form method="POST" action="{{ route('capsulas.update', $capsula->id) }}" role="form"
                         enctype="multipart/form-data">
                         @method('PUT')
+                        @csrf
 
                         <div class="box box-info padding-1">
                             <div class="box-body">
@@ -38,7 +37,7 @@
                                 <div class="form-group d-flex flex-col justify-content-between mt-4">
                                     <div class="item-fecha">
                                         <label class="text-secondary">Fecha</label>
-                                        <input type="date" name='fecha' class="form-control" placeholder="Fecha">
+                                        <input type="date" name='fecha' class="form-control" placeholder="Fecha" value="{{ $capsula->fecha ?? '' }}">
                                     </div>
                                     <div class="item-estado">
                                         <label class="text-secondary">Estado</label>
@@ -60,7 +59,7 @@
                                 
                             </div>
                             <div class="box-footer mt20">
-                                <button type="submit" class="btn btn-primary">CREAR</button>
+                                <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
                                 <a href="{{ route( "capsula.admin" )}}" class="btn btn-secondary">CANCELAR</a>
                             </div>
                             

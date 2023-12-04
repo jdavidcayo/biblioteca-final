@@ -106,3 +106,12 @@ h1, h2, h3, h4, h5, h6 {
 .item-archivo {
     width: 400px;
 }
+
+.font-gothamBold {
+    font-family: 'gotham-bold'!important;
+}
+
+th-primary {
+    background-color: #5d1250 !important;
+    color: white !important;
+}

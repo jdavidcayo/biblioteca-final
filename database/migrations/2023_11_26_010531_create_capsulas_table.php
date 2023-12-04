@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('capsulas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('tema')->nullable();
+            $table->date('fecha')->nullable();
             $table->text('descripcion')->nullable();
             $table->unsignedInteger('tipo')->nullable();
             $table->string('url');

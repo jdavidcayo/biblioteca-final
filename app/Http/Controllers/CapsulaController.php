@@ -53,6 +53,8 @@ class CapsulaController extends Controller
         $capsula = new Capsula();
         $capsula->titulo = $request->titulo;
         $capsula->descripcion = $request->descripcion;
+        $capsula->fecha = $request->fecha;
+        $capsula->estado = $request->estado;
         $capsula->url = $request->url;
         $capsula->autorId = $request->user()->id;
         
@@ -65,14 +67,8 @@ class CapsulaController extends Controller
             $file->storeAs("public/capsulas/" , $name);
     
         $imagePath = storage_path("app/public/capsulas/" .$name);
-
-    
         $resizedImage = Image::make($imagePath)->fit(320, 320);
-
-        
-        $resizedImage->save(storage_path("app/public/capsulas/" . $name));
-
-        
+        $resizedImage->save(storage_path("app/public/capsulas/" . $name));        
         $capsula->urlImagen = "storage/capsulas/" . $name;
 
         }
@@ -88,12 +84,38 @@ class CapsulaController extends Controller
 
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'url' => 'required',
+        ]);
+
+        request()->validate([
+            'urlImagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $capsula = Capsula::find($id);
         $capsula->titulo = $request->titulo;
-        $capsula->tema = $request->tema;
         $capsula->descripcion = $request->descripcion;
         $capsula->url = $request->url;
-        $capsula->autorId = $request->user()->id;
+        $capsula->fecha = $request->fecha;
+        $capsula->estado = $request->estado;
+        
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/capsulas/" , $name);
+    
+            $imagePath = storage_path("app/public/capsulas/" .$name);
+            $resizedImage = Image::make($imagePath)->fit(320, 320);
+            $resizedImage->save(storage_path("app/public/capsulas/" . $name));        
+            
+            $capsula->urlImagen = "storage/capsulas/" . $name;
+        }
+
         $capsula->save();
         return redirect()->route('capsula.admin');
     }

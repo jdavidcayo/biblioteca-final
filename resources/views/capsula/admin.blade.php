@@ -10,21 +10,23 @@
 @section('content')
 <div class="container col-md-10">
     <div class="w-100 bg-admin-card-title p-1">
-        <a href="{{ route('capsulas.create') }}" class="text-white text-decoration-none "> NUEVA CAPSULA</a>
-
+        <a href="{{ route('capsulas.create') }}" class="text-white text-decoration-none font-gothamBold "> 
+            +
+            NUEVA CÁPSULA
+        </a>
     </div>
     <hr>
 
         {{ $capsulas->links('pagination::simple-bootstrap-5') }}
-    <table id="dataTable" class="display">
-        <thead>
-            <tr>
+    <table class="table table-striped table-hover table-borderless">
+        <thead class="p-2 table-primary">
+            <tr >
                 <th>ACCIONES</th>
                 <th>ESTADO</th>
                 <th>FECHA</th>
                 <th>TITULO</th>
                 <th>SINTESIS</th>
-                <th>IMGAGEN</th>
+                <th>IMAGEN</th>
             </tr>
         </thead>
         <tbody>
@@ -41,10 +43,14 @@
                               </svg></button>
                         </form>
                     </td>
-                    <td>{{ $capsula->estado }}</td>
+                    <td>@if ($capsula->estado == 1)
+                        Activo 
+                        @else Borrador
+                        @endif
+                    </td>
                     <td>{{ $capsula->fecha }}</td>
                     <td>{{ $capsula->titulo }}</td>
-                    <td>{{ $capsula->tema }}</td>
+                    <td class="text">{!! $capsula->descripcion !!}</td>
                     <td><img src="{{ "../" . $capsula->urlImagen }}" alt="image" width="50px"></td>
                 </tr>
             @empty
