@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('tema');
-            $table->string('acuerdo');
-            $table->string('sentencia');
-            $table->string('sintesis');
-            $table->string('urlimg')->nullable();
-            $table->string('urldoc')->nullable();
+            $table->unsignedInteger('temaId');
+            $table->unsignedInteger('autoridadId')->nullable();
+            $table->unsignedInteger('autorId')->nullable();
+            $table->unsignedInteger('estado')->nullable();
+            $table->string('acuerdo')->nullable();
+            $table->string('sentencia')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->string('urlImagen')->nullable();
+            $table->string('urlDocumento')->nullable();
+            $table->date('fecha')->nullable();
             $table->timestamps();
         });
     }

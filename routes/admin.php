@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\CapsulaController;
 use App\Http\Controllers\CompendioController;
-use App\Http\Controllers\DocuentoController;
+use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\FolletoController;
 use App\Http\Controllers\FormatoController;
 use App\Http\Controllers\ManualController;
@@ -27,6 +27,10 @@ Route::resource('/folletos', FolletoController::class)->except('index', 'admin')
 
 Route::get('/formatos', [FormatoController::class, 'admin'])->name('formato.admin');
 Route::resource('/formatos', FormatoController::class)->except('index', 'admin');
+Route::get('/documentos', [DocumentoController::class, 'admin'])->name('documento.admin');
+Route::resource('/documentos', DocumentoController::class)->except('index', 'admin');
+
+
 // Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
 
 //TO DO
@@ -34,7 +38,6 @@ Route::resource('/formatos', FormatoController::class)->except('index', 'admin')
 
 Route::get('/catalogos', [CatalogoController::class, 'admin'])->name('catalogo.admin');
 Route::get('/compendios', [CompendioController::class, 'admin'])->name('compendio.admin');
-// Route::get('/documentos', [DocumentoController::class, 'admin'])->name('documento.admin');
 // Route::get('/usuarios', [UsuarioController::class, 'admin'])->name('usuario.admin');
 Route::resource('/usuarios', UsuarioController::class);
 

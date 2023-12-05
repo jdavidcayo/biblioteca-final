@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentoController;
 
 Route::middleware([
     'auth:sanctum',
@@ -13,12 +14,12 @@ Route::middleware([
         Route::get('/capsula', [App\Http\Controllers\CapsulaController::class, 'index'])->name('capsula.index');
         Route::get('/folleto', [App\Http\Controllers\FolletoController::class, 'index'])->name('folleto.index');
         Route::get('/formato', [App\Http\Controllers\FormatoController::class, 'index'])->name('formato.index');
+        Route::get('/documento', [DocumentoController::class, 'index'])->name('documento.index');
         
         
 
         // Route::get('/catalogo', [App\Http\Controllers\CatalogoController::class, 'index'])->name('catalogo.index');
         Route::resource('catalogo', App\Http\Controllers\CatalogoController::class);
-        Route::get('/documento', [App\Http\Controllers\DocumentoController::class, 'index'])->name('documento.index');
         Route::resource('compendio', App\Http\Controllers\CompendioController::class);
         // Route::get('/compendio', [App\Http\Controllers\CompendioController::class, 'index'])->name('compendio.index');
     });

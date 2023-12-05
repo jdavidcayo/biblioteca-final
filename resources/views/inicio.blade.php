@@ -69,7 +69,7 @@
 
 
         <div class="card text-bg-dark col-lg-4 border-0 rounded-0 p-0 " style="max-height: 300px; max-width: 350px">
-            {{-- <a href="{{ route('documento.index') }}"> --}}
+            <a href="{{ route('documento.index') }}">
                 <img src="{{ asset('assets/img/Mosaico-Documentos.png') }}" class="card-img img-fluid rounded-0 "
                     alt="Manuales" style="max-width: 350px">
                 <div class="card-img-overlay d-flex flex-column justify-content-end cardEffect">
@@ -79,7 +79,7 @@
                         <h5 class="card-title gothamR text-primary">DOCUMENTOS</h5>
                     </div>
                 </div>
-            {{-- </a> --}}
+            </a>
         </div>
 
         <div class="card text-bg-dark col-lg-4 border-0 rounded-0 p-0 " style="max-height: 300px; max-width: 350px">
