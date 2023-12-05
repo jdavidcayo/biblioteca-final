@@ -49,7 +49,7 @@
                     </td>
                     <td>{{ $formato->fecha }}</td>
                     <td>{{ $formato->titulo }}</td>
-                    <td><img src="{{ asset($formato->urlImagen) }}" alt="image" width="50px"></td>
+                    <td><img src="{{ asset($formato->urlImagenThumb) }}" alt="image" width="50px"></td>
                 </tr>
             @empty
                 <tr>

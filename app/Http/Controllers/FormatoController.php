@@ -35,23 +35,43 @@ class FormatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $formato = new Formato();
+        $formato->titulo = $request->titulo;
+        $formato->fecha = $request->fecha;
+        $formato->estado = $request->estado;
+        $formato->autorId = $request->user()->id;
+        
+        if ($request->hasFile("urlArchivo")) {
+            $file = $request->file("urlArchivo");
+
+            $name = time() . "-" . $request->file("urlArchivo")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/formatos/" , $name);
+    
+        $documentPath = storage_path("app/public/formatos/" .$name);
+                
+        $formato->urlDocumento = "storage/formatos/" . $name;
+
+        $extension = $file->getClientOriginalExtension();
+        $urlImagenThumb = asset("assets/img/ICONO-Formatos.png");
+        $formato->urlImagenThumb = $urlImagenThumb;
+            
+        }
+        
+        $formato->save();
+        return redirect()->route('formato.admin');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $formato = Formato::find($id);
+        return view("formato.edit", compact("formato"));
     }
 
     /**
@@ -59,7 +79,32 @@ class FormatoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $formato = Formato::find($id);
+        $formato->titulo = $request->titulo;
+        $formato->fecha = $request->fecha;
+        $formato->estado = $request->estado;
+        
+        
+        if ($request->hasFile("urlArchivo")) {
+            $file = $request->file("urlArchivo");
+
+            $name = time() . "-" . $request->file("urlArchivo")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/formatos/" , $name);
+    
+        $documentPath = storage_path("app/public/formatos/" .$name);
+                
+        $formato->urlDocumento = "storage/formatos/" . $name;
+
+        $extension = $file->getClientOriginalExtension();
+        $urlImagenThumb = asset("assets/img/ICONO-Formatos.png");
+        $formato->urlImagenThumb = $urlImagenThumb;
+            
+        }
+        
+        $formato->save();
+        return redirect()->route('formato.admin');
     }
 
     /**
@@ -67,6 +112,8 @@ class FormatoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $formato = Formato::find($id);
+        $formato->delete();
+        return redirect()->route('formato.admin');
     }
 }

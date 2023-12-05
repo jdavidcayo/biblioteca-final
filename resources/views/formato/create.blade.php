@@ -40,20 +40,34 @@
                                             <option value="0">Borrador</option>
                                         </select>
                                     </div>
-                                    <div class="item-archivo">
-                                        <label class="text-secondary">Imagen</label>
-                                        <input type="file" name="urlImagen" id="urlImagen" class="form-control">
-                                    </div>
+                                    
                                 </div>
+                                <div class="form-group d-flex flex-col justify-content-between mt-4">
+                                    <div class="">
+                                        <label class="text-secondary">Archivo</label>
+                                        <input type="file" name="urlArchivo" id="urlArchivo" class="form-control">
+                                    </div>
+                                    
+                                    <div class="item">
+                                        <label class="text-secondary">Tema</label>
+                                        <select name="tema" id="idTemaSelect" class="form-control">
+                                            {{-- consultar --}}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+
                                 <div class="form-group">
-                                    <label class="text-secondary">Archivo</label>
-                                    <input type="file" name="urlArchivo" id="urlArchivo" class="form-control">
+                                    <label class="text-secondary">Organismo</label>
+                                    <select name="organizacion" id="idOrganizacionSelect" class="form-control">
+                                        {{-- consultar --}}
+                                    </select>
                                 </div>
                                 
                             </div>
                             <div class="box-footer mt20">
                                 <button type="submit" class="btn btn-primary">CREAR</button>
-                                <a href="{{ route('formatos.index') }}" class="btn btn-secondary">CANCELAR</a>
+                                <a href="{{ route('formato.admin') }}" class="btn btn-secondary">CANCELAR</a>
                             </div>
                         </div>
 

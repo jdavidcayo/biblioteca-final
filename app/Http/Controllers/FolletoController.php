@@ -62,7 +62,7 @@ class FolletoController extends Controller
         }
         
         else{
-            $folleto->urlImagen = "assets/img/ICONO-Folletos.png";
+            $folleto->urlImagenThumb = "assets/img/ICONO-Folletos.png";
         }
 
         $folleto->save();

@@ -97,6 +97,8 @@ h1, h2, h3, h4, h5, h6 {
     text-overflow: ellipsis; 
 }
 
+
+/* items de formulario de carga de datos admin. */
 .item-fecha {
     width: 200px;
 }
@@ -106,6 +108,10 @@ h1, h2, h3, h4, h5, h6 {
 .item-archivo {
     width: 400px;
 }
+.item {
+    width: 350px;
+}
+
 
 .font-gothamBold {
     font-family: 'gotham-bold'!important;
