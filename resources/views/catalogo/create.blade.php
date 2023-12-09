@@ -45,10 +45,8 @@
                                 <div class="form-group d-flex flex-col justify-content-between mt-4">
                                     <div class="">
                                         <label class="text-secondary">Archivo</label>
-                                        <input type="file" name="urlArchivo" id="urlArchivo" class="form-control">
+                                        <input type="file" name="urlDocumento" id="urlDocumento" class="form-control">
                                     </div>
-                                    
-                                    
                                 </div>
                                 
                             </div>

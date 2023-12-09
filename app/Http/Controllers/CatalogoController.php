@@ -37,10 +37,8 @@ class CatalogoController extends Controller
     {
         $catalogo = new Catalogo();
         $catalogo->titulo = $request->titulo;
-        $catalogo->descripcion = $request->descripcion;
         $catalogo->fecha = $request->fecha;
         $catalogo->estado = $request->estado;
-        $catalogo->urlDocumento = $request->url;
         $catalogo->autorId = $request->user()->id;
 
         if ($request->hasFile("urlImagen")) {
@@ -57,6 +55,18 @@ class CatalogoController extends Controller
             $catalogo->urlImagen = "storage/documentos/" . $name;
         } else {
             $catalogo->urlImagen = "assets/img/ICONO-Compendios.png";
+        }
+
+        if ($request->hasFile("urlDocumento")) {
+            $file = $request->file("urlDocumento");
+
+            $name = time() . "-" . $request->file("urlDocumento")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/manuales/" , $name);
+    
+        $catalogo->urlDocumento = "storage/manuales/" . $name;
+
         }
 
         $catalogo->save();
@@ -84,7 +94,7 @@ class CatalogoController extends Controller
      */
     public function edit(string $id)
     {
-        $catalogo = Catalogo::find($id);
+        $catalogo = Catalogo::findOrFail($id);
         return view("catalogo.edit", compact("catalogo"));
     }
 
@@ -93,15 +103,48 @@ class CatalogoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $catalogo = Catalogo::findOrFail($id);
+        $catalogo->titulo = $request->titulo;
+        $catalogo->fecha = $request->fecha;
+        $catalogo->estado = $request->estado;
+        
+
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+
+            $file->storeAs("public/documentos/", $name);
+
+            $imagePath = storage_path("app/public/documentos/" . $name);
+            $resizedImage = Image::make($imagePath)->fit(320, 320);
+            $resizedImage->save(storage_path("app/public/documentos/" . $name));
+            $catalogo->urlImagen = "storage/documentos/" . $name;
+        } else {
+            $catalogo->urlImagen = "assets/img/ICONO-Compendios.png";
+        }
+
+        if ($request->hasFile("urlDocumento")) {
+            $file = $request->file("urlDocumento");
+
+            $name = time() . "-" . $request->file("urlDocumento")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/manuales/" , $name);
+    
+        $catalogo->urlDocumento = "storage/manuales/" . $name;
+
+        }
+
+        $catalogo->save();
+        return redirect()->route('catalogo.admin');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $catalogo = Catalogo::find($id);
         $catalogo->delete();
+        return redirect()->route('catalogo.admin');
     }
 }

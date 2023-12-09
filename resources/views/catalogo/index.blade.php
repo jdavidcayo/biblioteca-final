@@ -9,16 +9,19 @@
             @forelse ( $catalogos as $catalogo)
             <div class="col-lg-3 col-md-6 mb-4 cardEffect">
                 <div class="card align-items-center border-0" style="width: 100%;">
-                    <img src="{{ $catalogo->urlThumb }}" class="" alt="catalogo img" width="100px" height="150px">
+                    <p class="text-secondary">{{ $catalogo->titulo }}</p>
+                    <img src="{{ $catalogo->urlImagen }}" class="" alt="catalogo img" width="100px" height="150px">
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item">
-                            <a href="{{ $catalogo->urlPDF }}" download="{{ $catalogo->titulo . ".pdf" }}">
+                            
+                            <a href="{{ $catalogo->urlDocumento }}" download="{{ $catalogo->titulo . ".pdf" }}">
                                 <button type="button"
-                                class="btn btn-warning text-morado hover:text-white btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
+                                class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>
                         </li>
+                        
                         <li class="list-group-item pt-0">
-                            <a href="{{ route('catalogo.show',['catalogo'=> $catalogo->id])  }}">
+                            <a href="{{ route('catalogo.show',$catalogo)  }}">
                                 <button type="button" id="btnVerPDF"
                                     class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
                                     VER EN LÍNEA
