@@ -13,7 +13,7 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        $catalogos = Catalogo::paginate(10);
+        $catalogos = Catalogo::paginate(20);
         return view("catalogo.index", compact("catalogos"));
     }
 
