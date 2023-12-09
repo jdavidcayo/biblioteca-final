@@ -10,6 +10,9 @@ use App\Http\Controllers\FolletoController;
 use App\Http\Controllers\FormatoController;
 use App\Http\Controllers\ManualController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AutoridadController;
+use App\Http\Controllers\TemaController;
+use App\Http\Controllers\AreaController;
 
 
 //DONE
@@ -30,15 +33,16 @@ Route::resource('/formatos', FormatoController::class)->except('index', 'admin')
 Route::get('/documentos', [DocumentoController::class, 'admin'])->name('documento.admin');
 Route::resource('/documentos', DocumentoController::class)->except('index', 'admin');
 
+Route::get('/catalogos', [CatalogoController::class, 'admin'])->name('catalogo.admin');
 
-// Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
+Route::resource('/autoridades', AutoridadController::class);
+Route::resource('/temas', TemaController::class);
+Route::resource('/areas', AreaController::class);
+
 
 //TO DO
-
-
-Route::get('/catalogos', [CatalogoController::class, 'admin'])->name('catalogo.admin');
+// Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
 Route::get('/compendios', [CompendioController::class, 'admin'])->name('compendio.admin');
-// Route::get('/usuarios', [UsuarioController::class, 'admin'])->name('usuario.admin');
 Route::resource('/usuarios', UsuarioController::class);
 
 

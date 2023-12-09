@@ -10,7 +10,7 @@ class DocumentoController extends Controller
 {
     public function index()
     {
-        $documentos = Documento::paginate(10);
+        $documentos = Documento::paginate(20);
         return view('documento.index', compact('documentos'));
     }
 
