@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Tema')
+@section('title', 'Area')
 
 @section('content_header')
-    <h3 class="text-secondary my-2 px-2" style="background-color: #fcd5c9">TEMA</h3>
+    <h3 class="text-secondary my-2 px-2" style="background-color: #fcd5c9">AREA</h3>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
                 <div class="card card-default">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('temas.update', $tema) }}" role="form"
+                        <form method="POST" action="{{ route('areas.update', $area) }}" role="form"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -26,14 +26,14 @@
                                     <div class="form-group">
                                         <label class="text-secondary">Nombre</label>
                                         <input type="text" name='nombre' class="form-control"
-                                            placeholder="Nombre de tema" required value="{{ $tema->nombre }}">
+                                            placeholder="Nombre de tema" required value="{{ $area->nombre }}">
                                     </div>
 
                                     <div class="form-group">
 
                                         <label class="text-secondary">Descripción</label>
                                         <input type="text" name='descripcion' class="form-control"
-                                            placeholder="Descripción" value="{{ $tema->descripcion }}">
+                                            placeholder="Descripción" value="{{ $area->descripcion }}">
 
                                     </div>
 
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="box-footer mt20">
                                     <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
-                                    <a href="{{ route('temas.index') }}" class="btn btn-secondary">CANCELAR</a>
+                                    <a href="{{ route('areas.index') }}" class="btn btn-secondary">CANCELAR</a>
                                 </div>
                             </div>
 
