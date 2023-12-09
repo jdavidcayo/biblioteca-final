@@ -10,7 +10,7 @@ class Compendio extends Model
     use HasFactory;
     protected $fillable = [
 
-        "criterio","anio","autor","area","identificacion","sintesis","urlPDF"];
+        "criterio","anio","autorId","area","identificacion","descripcion","urlDocumento"];
 
         protected $title = "compendios";
         

@@ -1,3 +1,5 @@
+@extends('adminlte::page')
+
 <nav x-data="{ open: false }" class="bg-morado border-b border-gray-100 mb-3">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 sm:py-2 lg:px-8 lg:py-4 flex flex-col items-center">
