@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('compendios', function (Blueprint $table) {
             $table->id();
-            $table->string('criterio');
-            $table->year('anio');
-            $table->string('autor');
+            $table->string('titulo');
+            $table->string('urlDocumento')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->string('criterio')->nullable();
+            $table->date('fecha')->nullable();
+            $table->unsignedInteger('autorId')->nullable();
+            $table->unsignedInteger('estado')->default(1);
+            $table->timestamps();
+            $table->string('urlImagenThumb')->nullable();
+
             $table->string('area');
             $table->string('identificacion');
-            $table->string('sintesis');
-            $table->string('urlPDF')->nullable();
-            $table->timestamps();
         });
     }
 

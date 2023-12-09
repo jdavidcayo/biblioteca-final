@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('catalogos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('urlThumb')->nullable();
-            $table->string('urlPDF')->nullable();
+            $table->string('urlImagen')->nullable();
+            $table->string('urlDocumento')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->date('fecha')->nullable();
+            $table->unsignedInteger('estado')->default(1);
+            $table->unsignedInteger('autorId');
             $table->timestamps();
         });
     }
