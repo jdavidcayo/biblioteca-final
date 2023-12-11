@@ -1,95 +1,67 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Usuarios')
 
 @section('content_header')
-    <h3>USUARIOS</h3>
-@stop
+<h3 class="text-secondary px-2" style="background-color: #fcd5c9">USUARIOS</h3>
 
+@stop
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-
-                        <a href="{{ route('usuarios.create') }}"
-                            class="btn btn-primary  btn-block d-flex justify-content-start font-gothamBold" data-placement="left">
-                            + NUEVO
-                        </a>
-
-                        <div class="flex flex-row items-center text-center border-1  overflow-hidden border-none mt-2 bg-white h-8 ">
-                            <input type="text" autocomplete="off"
-                                class="w-full h-full text-crema placeholder-gray-400 border-none" />
-                            <img src="{{ asset('assets/img/Buscar.png') }}" alt="Logo usuario" class="h-8 border-none" width="25px"/>
-                        </div>
-
-                    </div>
-
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-                                        <th>ID</th>
-
-                                        <th>Nombre</th>
-                                        <th>Organizacion</th>
-                                        <th>Email</th>
-                                        <th>Rol</th>
-
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($usuarios as $usuario)
-                                        <tr>
-                                            <td>{{ $usuario->id }}</td>
-
-                                            <td>{{ $usuario->name }}</td>
-                                            <td>{{ $usuario->organizacion }}</td>
-                                            <td>{{ $usuario->email }}</td>
-                                            <td>{{ $usuario->rol }}</td>
-
-                                            <td>
-                                                <a class="btn btn-sm btn-primary "
-                                                    href="{{ route('usuarios.show', $usuario->id) }}"><i
-                                                        class="fa fa-fw fa-eye"></i> MOSTRAR</a>
-                                                <a class="btn btn-sm btn-success"
-                                                    href="{{ route('usuarios.edit', $usuario->id) }}"><i
-                                                        class="fa fa-fw fa-edit"></i> EDITAR</a>
-                                                <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i> ELIMINAR</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                {{-- {!! $users->links() !!} --}}
-            </div>
-        </div>
+<div class="container col-md-10 mt-4">
+    <div class="w-100 bg-admin-card-title p-1">
+        <a href="{{ route('usuarios.create') }}" class="text-white text-decoration-none font-gothamBold "> 
+            +
+            NUEVO USUARIO
+        </a>
     </div>
+    <hr>
 
+        {{ $users->links('pagination::simple-bootstrap-5') }}
+    <table class="table table-striped table-hover table-borderless">
+        <thead class="p-2 table-primary">
+            <tr >
+                <th>ACCIONES</th>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>EMAIL</th>
+                {{-- <th>ROL</th> --}}
+                
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($users as $usuario)
+                <tr class="m-2">
+                    <td width="150px">
+                        <a href="{{ route('usuarios.edit', $usuario) }}" class="btn btn-outline-primary rounded-pill">Editar</a>
+                        <form action="{{ route('usuarios.destroy', $usuario) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn bg-btn-red rounded-pill" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                              </svg></button>
+                        </form>
+                    </td>
+                    <td>{{ $usuario->id }}</td>
+                    <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->email }}</td>
+                    {{-- <td>{{ $usuario->rol }}</td> --}}
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5">No hay usuarios</td>
+                </tr>
+            @endforelse
+
+        </tbody>
+    </table>
+</div>
 @stop
+
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    @livewireStyles()
+    <link rel="stylesheet" href=" {{ asset('assets/css/styles.css') }}">
 @stop
 
 @section('js')

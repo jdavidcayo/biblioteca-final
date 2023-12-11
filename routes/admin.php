@@ -39,10 +39,11 @@ Route::resource('/autoridades', AutoridadController::class);
 Route::resource('/temas', TemaController::class);
 Route::resource('/areas', AreaController::class);
 
+Route::post('/usuarios/generate', [UsuarioController::class, 'generateRandomPassword'])->name('usuario.generatepwd.admin');
+Route::resource('/usuarios', UsuarioController::class);
+
 
 //TO DO
-// Route::get('/generate-password', [UtilsController::class, 'generateRandomPassword'])->name('admin.generate-password');
 Route::get('/compendios', [CompendioController::class, 'admin'])->name('compendio.admin');
-Route::resource('/usuarios', UsuarioController::class);
 
 

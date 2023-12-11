@@ -12,8 +12,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
-        return view('user.admin', compact('usuarios'));
+        $users = User::paginate(20);
+        return view('user.admin', compact('users'));
     }
 
     /**
@@ -29,7 +29,14 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+        user::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            // 'rol' => $request->rol,
 
+        ]);
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -45,7 +52,8 @@ class UsuarioController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $usuario = User::find($id);
+        return view('user.edit', compact('usuario'));
     }
 
     /**
@@ -53,7 +61,13 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -61,8 +75,22 @@ class UsuarioController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('usuarios.index');
     }
 
+    public function generateRandomPassword()
+    {
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%';
+        $password = '';
+        
+        for ($i = 0; $i < 12; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $password .= $characters[$index];
+        }
+        
+        return response()->json(['password' => $password]);
+    }
     
 }

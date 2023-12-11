@@ -1,45 +1,33 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ $user->name ?? "{{ __('Show') User" }}
-@endsection
+@extends('layouts.base')
 
 @section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} User</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('usuario.index') }}"> {{ __('Back') }}</a>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            {{ $user->name }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Organizacion:</strong>
-                            {{ $user->organizacion }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Email:</strong>
-                            {{ $user->email }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Rol:</strong>
-                            {{ $user->rol }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <h3>Manuales</h3>
+    </div>
+    <div class="container d-flex flex-row justify-content-between ">
+        <div class="d-flex flex-row">
+            <a href="{{ route('manual.index') }}" class="d-flex flex-row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z" />
+                </svg>
+                <p class="mx-2">Ver todos</p>
+            </a>
         </div>
-    </section>
+
+
+    </div>
+    <div class="container">
+        <div class="d-flex flex-row justify-content-between mb-2">
+            <h4>{{ $manual->titulo }}</h4>
+            <a href="{{ asset($manual->urlDocumento) }}" download="{{ $manual->titulo . '.pdf' }}">
+                <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm">DESCARGAR</button>
+            </a>
+        </div>
+        <hr>
+        <div class="d-flex flex-column align-items-center mt-4">
+            <iframe src="{{ asset($manual->urlDocumento) }}" frameborder="0" width="80%" height="900px"></iframe>
+        </div>
+    </div>
 @endsection
