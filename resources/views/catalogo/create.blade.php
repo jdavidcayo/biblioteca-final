@@ -17,7 +17,7 @@
                     <span class="card-title font-gothamBold">NUEVO CATALOGO</span>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('catalogo.store') }}"  role="form" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('catalogos.store') }}"  role="form" enctype="multipart/form-data">
                         @csrf
 
                         <div class="box box-info padding-1">

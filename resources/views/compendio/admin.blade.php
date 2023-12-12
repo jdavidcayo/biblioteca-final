@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Capsulas informativas')
+@section('title', 'Compendios')
 
 @section('content_header')
 <div class="w-100 bg-admin-section-title p-2">
@@ -8,7 +8,7 @@
 </div>    
 @stop
 @section('content')
-<div class="container col-md-10">
+<div class="container col-md-12">
     <div class="w-100 bg-admin-card-title p-1">
         <a href="{{ route('compendio.create') }}" class="text-white text-decoration-none font-gothamBold "> 
             +
@@ -21,11 +21,11 @@
     <table class="table table-striped table-hover table-borderless">
         <thead class="p-2 table-primary">
             <tr >
-                <th>ACCIONES</th>
-                <th>Estado</th>
+                <th width="150px">ACCIONES</th>
+                <th>ESTADO</th>
                 <th>AÑO</th>
                 <th>AUTOR</th>
-                <th>AREA</th>
+                {{-- <th>AREA</th> --}}
                 <th>IDENTIFICACION</th>
                 <th>SINTESIS</th>
                 <th>PDF</th>
@@ -50,14 +50,21 @@
                         @else Borrador
                         @endif
                     </td>
-                    <td>{{ $compendio->fecha }}</td>
-                    <td>{{ $compendio->autorId }}</td>
-                    <td>{{ $compendio->area }}</td>
-                    <td>{{ $compendio->identificacion }}</td>
-                    <td>{{ $compendio->descripcion }}</td>
-                    <td>{{ $compendio->urlDocumento }}</td>
-
-                    {{-- <td><img src="{{ "../" . $compendio->urlPDF }}" alt="image" width="50px"></td> --}}
+                    <td>{{ $compendio->anio }}</td>
+                    <td>{{ $compendio->autor->name }}</td>
+                    {{-- <td>{{ $compendio->area }}</td> --}}
+                    <td>{{ $compendio->titulo }}</td>
+                    <td>{!! $compendio->descripcion !!}</td>
+                    <td>
+                        @if ($compendio->urlDocumento == null)
+                            <p class="text-danger">No hay documento</p>
+                            
+                        @else
+                        <a href="{{ "../" . $compendio->urlDocumento }}" download="{{ $compendio->titulo . ".pdf" }}">
+                            Descargar
+                        </a>
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>

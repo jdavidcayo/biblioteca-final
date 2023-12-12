@@ -32,7 +32,7 @@
             @forelse ($documentos as $documento)
                 <tr class="m-2">
                     <td>
-                        <a href="{{ route('documetos.edit', $documento) }}" class="btn btn-outline-primary rounded-pill">Editar</a>
+                        <a href="{{ route('documentos.edit', $documento) }}" class="btn btn-outline-primary rounded-pill">Editar</a>
                         <form action="{{ route('documentos.destroy', $documento) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
@@ -49,6 +49,7 @@
                     </td>
                     <td>{{ $documento->fecha }}</td>
                     <td>{{ $documento->titulo }}</td>
+                    <td>{!! $documento->descripcion !!}</td>
                     <td><img src="{{ "../" . $documento->urlImagen }}" alt="image" width="50px"></td>
                 </tr>
             @empty

@@ -25,6 +25,19 @@ class DocumentoController extends Controller
         return view('documento.create');
     }
 
+    public function edit($id)
+    {
+        $documento = Documento::findOrFail($id);
+        return view('documento.edit', compact('documento'));
+    }
+
+    public function destroy($id)
+    {
+        $documento = Documento::findOrFail($id);
+        $documento->delete();
+        return redirect()->route('documento.admin');
+    }
+
     public function store(Request $request)
     {
         $documento = new Documento();

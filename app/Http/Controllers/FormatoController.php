@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Formato;
 use Illuminate\Http\Request;
+use App\Models\Tema;
+use App\Models\Autoridad;
 
 class FormatoController extends Controller
 {
@@ -27,7 +29,9 @@ class FormatoController extends Controller
      */
     public function create()
     {
-        return view("formato.create");
+        $temas = Tema::all();
+        $autoridades = Autoridad::all();
+        return view("formato.create",compact("temas","autoridades"));
     }
 
     /**

@@ -15,11 +15,8 @@ Route::middleware([
         Route::get('/folleto', [App\Http\Controllers\FolletoController::class, 'index'])->name('folleto.index');
         Route::get('/formato', [App\Http\Controllers\FormatoController::class, 'index'])->name('formato.index');
         Route::get('/documento', [DocumentoController::class, 'index'])->name('documento.index');
+        Route::get('/catalogo', [App\Http\Controllers\CatalogoController::class, 'index'])->name('catalogo.index');
+        Route::get('/catalogo/{catalogo}', [App\Http\Controllers\CatalogoController::class, 'show'])->name('catalogo.show');
+        Route::get('/compendio', [App\Http\Controllers\CompendioController::class, 'index'])->name('compendio.index');
         
-        
-
-        // Route::get('/catalogo', [App\Http\Controllers\CatalogoController::class, 'index'])->name('catalogo.index');
-        Route::resource('catalogo', App\Http\Controllers\CatalogoController::class);
-        Route::resource('compendio', App\Http\Controllers\CompendioController::class);
-        // Route::get('/compendio', [App\Http\Controllers\CompendioController::class, 'index'])->name('compendio.index');
     });

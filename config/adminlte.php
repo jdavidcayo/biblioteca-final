@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => '',
+    'title_prefix' => 'Panel de administración | ',
     'title_postfix' => '',
 
     /*
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Biblioteca</b>',
+    'logo' => '<strong>Biblioteca</strong>',
     'logo_img' => 'assets/img/Logo-IEEG.png',
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
@@ -320,7 +320,7 @@ return [
         ],
         [
             'text' => 'COMPENDIOS',
-            'url'  => 'admin/compendios',
+            'url'  => 'admin/compendio',
             'icon' => 'fas fa-fw fa-file',
         ],
         [
@@ -328,15 +328,28 @@ return [
             'url'  => 'admin/capsulas',
             'icon' => 'fas fa-fw fa-file',
         ],
-        // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
+        [
+            'text'    => 'Entidades',
+            'icon'    => 'fas fa-database',
+            'submenu' => [
+                [
+                    'text' => 'Autoridades',
+                    'url'  => 'admin/autoridades',
+                    'icon' => 'fas fa-file',
+                ],
+                [
+                    'text' => 'Temas',
+                    'url'  => 'admin/temas',
+                    'icon' => 'fas fa-file',
+                ],
+                [
+                    'text' => 'Áreas',
+                    'url'  => 'admin/areas',
+                    'icon' => 'fas fa-file',
+                ],
+            ]
+        ]
+        //        [
         //             'text'    => 'level_one',
         //             'url'     => '#',
         //             'submenu' => [
@@ -382,7 +395,7 @@ return [
         //     'icon_color' => 'cyan',
         //     'url'        => '#',
         // ],
-    ],
+        ],
 
     /*
     |--------------------------------------------------------------------------

@@ -51,7 +51,11 @@
                                     <div class="item">
                                         <label class="text-secondary">Tema</label>
                                         <select name="tema" id="idTemaSelect" class="form-control">
-                                            {{-- consultar --}}
+                                            @forelse ( $temas as $tema)
+                                                <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
+                                            @empty
+                                                <option value="0">No hay temas registrados</option>
+                                            @endforelse
                                         </select>
                                     </div>
                                     
@@ -60,7 +64,11 @@
                                 <div class="form-group">
                                     <label class="text-secondary">Organismo</label>
                                     <select name="organizacion" id="idOrganizacionSelect" class="form-control">
-                                        {{-- consultar --}}
+                                        @forelse ( $autoridades as $autoridad)
+                                            <option value="{{ $autoridad->id }}">{{ $autoridad->nombre }}</option>
+                                        @empty
+                                            <option value="0">No hay autoridades registradas</option>
+                                        @endforelse
                                     </select>
                                 </div>
                                 

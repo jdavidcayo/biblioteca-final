@@ -17,14 +17,15 @@ return new class extends Migration
             $table->string('urlDocumento')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('criterio')->nullable();
+            $table->year('anio')->nullable();
             $table->date('fecha')->nullable();
-            $table->unsignedInteger('autorId')->nullable();
+            $table->unsignedInteger('autorId')->nullable()->foreign('autorId')->references('id')->on('users');
+            $table->unsignedInteger('autoridad')->nullable()->foreign('autoridad')->references('id')->on('autoridades');
             $table->unsignedInteger('estado')->default(1);
             $table->timestamps();
-            $table->string('urlImagenThumb')->nullable();
+            $table->string('urlImagen')->nullable();
 
-            $table->string('area');
-            $table->string('identificacion');
+            $table->string('area')->nullable();
         });
     }
 

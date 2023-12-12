@@ -9,7 +9,7 @@
 @section('content')
 <div class="container col-md-10 mt-4">
     <div class="w-100 bg-admin-card-title p-1">
-        <a href="{{ route('catalogo.create') }}" class="text-white text-decoration-none font-gothamBold "> 
+        <a href="{{ route('catalogos.create') }}" class="text-white text-decoration-none font-gothamBold "> 
             +
             NUEVO CATALOGO
         </a>
@@ -32,8 +32,8 @@
             @forelse ($catalogos as $catalogo)
                 <tr class="m-2">
                     <td>
-                        <a href="{{ route('catalogo.edit', $catalogo) }}" class="btn btn-outline-primary rounded-pill">Editar</a>
-                        <form action="{{ route('catalogo.destroy', $catalogo) }}" method="POST" class="d-inline">
+                        <a href="{{ route('catalogos.edit', $catalogo) }}" class="btn btn-outline-primary rounded-pill">Editar</a>
+                        <form action="{{ route('catalogos.destroy', $catalogo) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn bg-btn-red rounded-pill" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

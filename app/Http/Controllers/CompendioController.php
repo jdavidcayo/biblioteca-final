@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Compendio;
 
+use App\Models\Compendio;
+use App\Models\Autoridad;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class CompendioController extends Controller
 {
@@ -12,18 +14,13 @@ class CompendioController extends Controller
      */
     public function index()
     {
-        $criterios = Compendio::distinct()->pluck('criterio');
+        $compendios = Compendio::paginate(20);
 
-        $anios = Compendio::distinct()->pluck('fecha');
-
-        $autoridad = Compendio::distinct()->pluck('autorId');
-
-
-        $compendios = Compendio::paginate(10);
-        return view("compendio.index", compact("compendios", "criterios","fecha","autorId"));
+        return view("compendio.index", compact("compendios"));
     }
-    public function admin(){
-        $compendios = Compendio::paginate(10);
+    public function admin()
+    {
+        $compendios = Compendio::paginate(20);
         return view('compendio.admin', compact('compendios'));
     }
     /**
@@ -31,28 +28,59 @@ class CompendioController extends Controller
      */
     public function create()
     {
-        return view('compendio.create');
+        $autoridades = Autoridad::all();
+        return view('compendio.create', compact('autoridades'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     $compendios = new Compendio();
-    //     $compendios->titulo = $request->titulo;
-    //     $compendios->descripcion = $request->descripcion;
-    //     $compendios->fecha = $request->fecha;
-    //     $compendios->estado = $request->estado;
-    //     $compendios->area = $request->area;
-    //     $compendios->identificacion = $request->identificacion;
-    //     $compendios->descripcion = $request->descripcion;
-    //     $compendios->urlDocumento = $request->urlDocumento;
-    //     $compendios->autorId = $request->user()->id;
+    public function store(Request $request)
+    {
+        $compendio = new Compendio();
+        $compendio->titulo = $request->titulo;
+        $compendio->descripcion = $request->descripcion;
+        $compendio->anio = $request->anio;
+        $compendio->estado = $request->estado;
+        $compendio->autoridad = $request->autoridad;
+        if ($request->area) $compendio->area = $request->area;
 
-    //     $compendios->save();
-    //     return redirect()->route('compendio.index');
-    // }
+        $compendio->autorId = $request->user()->id;
+
+        if ($request->hasFile("urlImagen")) {
+            $file = $request->file("urlImagen");
+
+            $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+            
+            $file->storeAs("public/compendios/" , $name);
+    
+        $imagePath = storage_path("app/public/compendios/" .$name);
+        $resizedImage = Image::make($imagePath)->fit(320, 320);
+        $resizedImage->save(storage_path("app/public/compendios/" . $name));        
+        $compendio->urlImagen = "storage/compendios/" . $name;
+
+        }
+        
+        else{
+            $compendio->urlImagen = "assets/img/ICONO-Documentos.png";
+        }
+
+
+        if ($request->hasFile("urlDocumento")) {
+            $file = $request->file("urlDocumento");
+
+            $name = time() . "-" . $request->file("urlDocumento")->getClientOriginalName();
+            $name = str_replace(" ", "-", $name);
+
+            $file->storeAs("public/compendios/", $name);
+
+            $compendio->urlDocumento = "storage/compendios/" . $name;
+        }
+
+        $compendio->save();
+        return redirect()->route('compendio.admin');
+    }
 
 
     /**
@@ -69,7 +97,8 @@ class CompendioController extends Controller
     public function edit(string $id)
     {
         $compendio = Compendio::find($id);
-        return view('compendio.edit', compact('compendio'));
+        $autoridades = Autoridad::all();
+        return view('compendio.edit', compact('compendio', 'autoridades'));
     }
 
     /**

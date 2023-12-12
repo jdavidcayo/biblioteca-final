@@ -15,7 +15,7 @@
                 <div class="card card-default">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('catalogo.update', $catalogo->id) }}" role="form"
+                        <form method="POST" action="{{ route('catalogos.update', $catalogo->id) }}" role="form"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf

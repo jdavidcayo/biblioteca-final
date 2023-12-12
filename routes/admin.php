@@ -30,20 +30,26 @@ Route::resource('/folletos', FolletoController::class)->except('index', 'admin')
 
 Route::get('/formatos', [FormatoController::class, 'admin'])->name('formato.admin');
 Route::resource('/formatos', FormatoController::class)->except('index', 'admin');
+
 Route::get('/documentos', [DocumentoController::class, 'admin'])->name('documento.admin');
 Route::resource('/documentos', DocumentoController::class)->except('index', 'admin');
 
 Route::get('/catalogos', [CatalogoController::class, 'admin'])->name('catalogo.admin');
+Route::resource('/catalogos', CatalogoController::class)->except('index','show', 'admin');
 
 Route::resource('/autoridades', AutoridadController::class);
 Route::resource('/temas', TemaController::class);
 Route::resource('/areas', AreaController::class);
 
+Route::get('/compendio', [CompendioController::class, 'admin'])->name('compendio.admin');
+Route::resource('/compendio', App\Http\Controllers\CompendioController::class)->except('index');
+
 Route::post('/usuarios/generate', [UsuarioController::class, 'generateRandomPassword'])->name('usuario.generatepwd.admin');
 Route::resource('/usuarios', UsuarioController::class);
 
 
-//TO DO
-Route::get('/compendios', [CompendioController::class, 'admin'])->name('compendio.admin');
+
+
+
 
 
