@@ -121,3 +121,16 @@ th-primary {
     background-color: #5d1250 !important;
     color: white !important;
 }
+
+
+/* Tabla Documentos */
+.table-hover tbody tr:hover {
+    transform: scale(1.02); 
+    transition: transform 0.3s ease-in-out; 
+  }
+
+.cardTitleDocumento {
+    font-family: 'gotham-bold';
+    font-size: 1.4rem;
+    
+}

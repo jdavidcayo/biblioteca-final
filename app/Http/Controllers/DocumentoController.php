@@ -5,30 +5,45 @@ namespace App\Http\Controllers;
 use App\Models\Documento;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use App\Models\Autoridad;
+use App\Models\Tema;
 
 class DocumentoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $documentos = Documento::paginate(20);
-        return view('documento.index', compact('documentos'));
+        $autoridades = Autoridad::all();
+        $documentos = Documento::where('estado', '1')
+        ->orderByDesc('fecha')
+        ->paginate(20);
+
+        if($request->has('autoridadId'))
+        {
+            $documentos = Documento::where('autoridadId', $request->autoridadId)->orderByDesc('fecha')->paginate(20);
+        } 
+
+        return view('documento.index', compact('documentos', 'autoridades'));
     }
 
     public function admin()
     {
-        $documentos = Documento::paginate(20);
+        $documentos = Documento::orderByDesc('created_at')->paginate(20);
         return view('documento.admin', compact('documentos'));
     }
 
     public function create()
     {
-        return view('documento.create');
+        $autoridades = Autoridad::all();
+        $temas = Tema::all();
+        return view('documento.create', compact('autoridades', 'temas'));
     }
 
     public function edit($id)
     {
         $documento = Documento::findOrFail($id);
-        return view('documento.edit', compact('documento'));
+        $autoridades = Autoridad::all();
+        $temas = Tema::all();
+        return view('documento.edit', compact('documento', 'autoridades', 'temas'));
     }
 
     public function destroy($id)
@@ -46,6 +61,8 @@ class DocumentoController extends Controller
         $documento->fecha = $request->fecha;
         $documento->estado = $request->estado;
         $documento->autorId = $request->user()->id;
+        $documento->autoridadId = $request->autoridadSelect;
+        $documento->temaId = $request->temaSelect;
         
         if ($request->hasFile("urlImagen")) {
             $file = $request->file("urlImagen");
@@ -89,10 +106,11 @@ class DocumentoController extends Controller
         $documento->descripcion = $request->descripcion;
         $documento->fecha = $request->fecha;
         $documento->estado = $request->estado;
-        $documento->url = $request->url;
         $documento->autorId = $request->user()->id;
+        $documento->autoridadId = $request->autoridadSelect;
+        $documento->temaId = $request->temaSelect;
         
-        if ($request->hasFile("urlImagen")) {
+        if ($request->hasFile("urlImagen") && $request->file("urlImagen") != null && $request->file("urlImagen") != "") {
             $file = $request->file("urlImagen");
 
             $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
@@ -108,10 +126,12 @@ class DocumentoController extends Controller
         }
         
         else{
-            $documento->urlImagen = "assets/img/ICONO-Documentos.png";
+            if($documento->urlImagen == null || $documento->urlImagen == ""){
+                $documento->urlImagen = "assets/img/ICONO-Documentos.png";
+            }
         }
 
-        if ($request->hasFile("urlDocumento")) {
+        if ($request->hasFile("urlDocumento") && $request->file("urlDocumento") != null && $request->file("urlDocumento") != "") {
             $file = $request->file("urlDocumento");
 
             $name = time() . "-" . $request->file("urlDocumento")->getClientOriginalName();

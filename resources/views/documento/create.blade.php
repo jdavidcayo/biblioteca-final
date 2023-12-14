@@ -63,23 +63,24 @@
                                         <div class="item">
                                             <label class="text-secondary">Tema</label>
                                             <select name="temaSelect" id="temaSelect" class="form-control">
-                                                {{-- @foreach ($temas as $tema)
-                                                <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
-                                            @endforeach --}}
+                                                @foreach ($temas as $tema)
+                                                    <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="text-secondary">Autoridad</label>
-                                        <select name="autoridadSelect" id="autoridadSelect" class="form-control">
-                                            {{-- @foreach ($autoridades as $autoridad)
-                                                <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
-                                            @endforeach --}}
+                                        <select name="autoridadSelect" id="autoridadSelect" class="form-control item">
+                                            <option value="0">-</option>
+                                            @foreach ($autoridades as $autoridad)
+                                                <option value="{{ $autoridad->id }}">{{ $autoridad->nombre }}</option>
+                                            @endforeach 
+                                        </select>
                                     </div>
 
-
-                                </div>
                                 <div class="box-footer mt20">
                                     <button type="submit" class="btn btn-primary ">CREAR</button>
                                     <a href="{{ route('documento.admin') }}" class="btn btn-secondary">CANCELAR</a>

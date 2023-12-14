@@ -12,10 +12,18 @@ class CompendioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    //if ($request->filled('anio')) {
+      //  $query->where('anio', $request->anio);
+    //}
+    public function index(Request $request)
     {
-        $compendios = Compendio::paginate(20);
+        $compendios = Compendio::where('estado', 1)
+            ->orderByDesc('anio')
+            ->paginate(20);
 
+        if ($request->has('autoridadId')) {
+            $compendios = Compendio::where('autoridadId', $request->autoridadId)->orderByDesc('anio')->paginate(20);
+        }
         return view("compendio.index", compact("compendios"));
     }
     public function admin()
@@ -52,17 +60,14 @@ class CompendioController extends Controller
 
             $name = time() . "-" . $request->file("urlImagen")->getClientOriginalName();
             $name = str_replace(" ", "-", $name);
-            
-            $file->storeAs("public/compendios/" , $name);
-    
-        $imagePath = storage_path("app/public/compendios/" .$name);
-        $resizedImage = Image::make($imagePath)->fit(320, 320);
-        $resizedImage->save(storage_path("app/public/compendios/" . $name));        
-        $compendio->urlImagen = "storage/compendios/" . $name;
 
-        }
-        
-        else{
+            $file->storeAs("public/compendios/", $name);
+
+            $imagePath = storage_path("app/public/compendios/" . $name);
+            $resizedImage = Image::make($imagePath)->fit(320, 320);
+            $resizedImage->save(storage_path("app/public/compendios/" . $name));
+            $compendio->urlImagen = "storage/compendios/" . $name;
+        } else {
             $compendio->urlImagen = "assets/img/ICONO-Documentos.png";
         }
 
