@@ -55,7 +55,7 @@
                             </div>
                             <div class="box-footer mt20">
                                 <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
-                                <a href="{{ route( "manual.admin" )}}" class="btn btn-secondary">CANCELAR</a>
+                                <a href="{{ route( "folleto.admin" )}}" class="btn btn-secondary">CANCELAR</a>
                             </div>
                         </div>
 

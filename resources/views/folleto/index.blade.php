@@ -9,9 +9,10 @@
 
             @forelse ($folletos as $folleto)
                 <div class="col-lg-3 col-md-6 mb-4 cardEffect">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#miModal">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#miModal" id="link">
+                        <span hidden>{{ $folleto->id }}</span>
                         <div class="card align-items-center border-0 " style="width: 100%;">
-                            <img src="{{ $folleto->urlImagenThumb }}" class="" alt="Manual img" width="200px" height="200px">
+                            <img src="{{ asset($folleto->urlImagenThumb); }}" class="" alt="Manual img" width="200px" height="200px">
                             <h6 class="limitedText text-secondary mt-2"> {{ $folleto->titulo }}</h6>
                         </div>
                     </a>
@@ -28,7 +29,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content p-0 m-0">
                 <div class="modal-body p-0 m-0">
@@ -36,8 +37,9 @@
                     <div id="carousel" class="carousel slide">
                         <div class="carousel-inner">
                             @forelse ($folletos as $folleto)
-                                <div class="carousel-item @if ($loop->first) active @endif">
-                                    <img src="{{ asset($folleto->urlImagen) }}" class="d-block w-100" alt="...">
+                                {{-- <div class="carousel-item @if ($loop->first) active @endif"> --}}
+                                    <div class="carousel-item" id="{{ $folleto->id }}">
+                                    <img src="{{ asset($folleto->urlImagen) }}" class="d-block" alt="folleto" height="640px">
                                 </div>
                                 
                 
@@ -62,4 +64,16 @@
             </div>
         </div>
     </div>
+    <script>
+        let folletos = document.querySelectorAll('#link');
+        folletos.forEach(folletoLink => {
+            folletoLink.addEventListener('click', (e) => {
+                let span = folletoLink.querySelector('span');
+                let id = span.textContent;
+                let carouselItem = document.getElementById(id);
+                carouselItem.classList.add('active');
+            })
+        });
+        
+    </script>
 @endsection

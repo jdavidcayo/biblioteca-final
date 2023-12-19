@@ -14,9 +14,9 @@ Route::middleware([
         Route::get('/capsula', [App\Http\Controllers\CapsulaController::class, 'index'])->name('capsula.index');
         Route::get('/capsula/{capsula}', [App\Http\Controllers\CapsulaController::class, 'show'])->name('capsula.show');
         Route::get('/folleto', [App\Http\Controllers\FolletoController::class, 'index'])->name('folleto.index');
-        Route::get('/capsula/{folleto}', [App\Http\Controllers\FolletoController::class, 'show'])->name('folleto.show'); //todo
+        Route::get('/folleto/{folleto}', [App\Http\Controllers\FolletoController::class, 'show'])->name('folleto.show');
         Route::get('/formato', [App\Http\Controllers\FormatoController::class, 'index'])->name('formato.index');
-        Route::get('/formato/{formato}', [App\Http\Controllers\FormatoController::class, 'show'])->name('formato.show'); //todo
+        Route::get('/formato/{formato}', [App\Http\Controllers\FormatoController::class, 'show'])->name('formato.show');
         Route::get('/documento', [DocumentoController::class, 'index'])->name('documento.index');
         Route::get('/catalogo', [App\Http\Controllers\CatalogoController::class, 'index'])->name('catalogo.index');
         Route::get('/catalogo/{catalogo}', [App\Http\Controllers\CatalogoController::class, 'show'])->name('catalogo.show');

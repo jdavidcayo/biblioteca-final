@@ -76,12 +76,11 @@ class FolletoController extends Controller
     {
         $folleto = Folleto::find($id);
 
-        // Verifica si el folleto existe
         if (!$folleto) {
             abort(404);
         }
     
-        return view('folletos.index', compact('folleto'));
+        return view('folleto.show', compact('folleto'));
     }
 
     /**
