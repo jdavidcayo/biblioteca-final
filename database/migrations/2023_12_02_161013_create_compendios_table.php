@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('urlDocumento')->nullable();
             $table->text('descripcion')->nullable();
-            $table->string('criterio')->nullable();
+            $table->string('criterio')->nullable()->foreign('criterio')->references('id')->on('criterios');;
             $table->year('anio')->nullable();
             $table->date('fecha')->nullable();
             $table->unsignedInteger('autorId')->nullable()->foreign('autorId')->references('id')->on('users');
             $table->unsignedInteger('autoridad')->nullable()->foreign('autoridad')->references('id')->on('autoridades');
             $table->unsignedInteger('estado')->default(1);
-            $table->timestamps();
             $table->string('urlImagen')->nullable();
+            $table->timestamps();
 
             $table->string('area')->nullable();
         });

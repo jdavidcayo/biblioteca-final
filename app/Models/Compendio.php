@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Criterio;
 
 class Compendio extends Model
 {
@@ -18,5 +19,10 @@ class Compendio extends Model
     public function autor()
     {
         return $this->belongsTo(User::class, 'autorId');
+    }
+
+    public function criterioId()
+    {
+        return $this->belongsTo(Criterio::class, 'criterio');
     }
 }

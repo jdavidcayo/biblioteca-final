@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('fecha')->nullable();
             $table->text('descripcion')->nullable();
             $table->unsignedInteger('tipo')->nullable();
-            $table->string('url');
+            $table->text('url');
             $table->string('urlImagen')->nullable();
             $table->unsignedInteger('estado')->default(1);
             $table->unsignedInteger('autorId');

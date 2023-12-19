@@ -70,11 +70,15 @@
                 </div>
 
                 {{-- search input --}}
-                <div class="flex flex-row items-center text-center rounded-pill  overflow-hidden border-none mt-2 bg-white h-8 ">
-                    <input type="text" autocomplete="off"
-                        class="w-full h-full text-crema placeholder-gray-400 border-none" />
-                    <img src="{{ asset('assets/img/Buscar.png') }}" alt="Logo usuario" class="h-8 border-none" />
-                </div>
+                <form action="{{ route('busqueda.index')}}" method="POST" id="buscarForm">
+                    @method('POST')
+                    @csrf
+                    <div class="flex flex-row items-center text-center rounded-pill  overflow-hidden border-none mt-2 bg-white h-8 ">
+                        <input type="text" name="query" autocomplete="off"
+                        class="w-full h-full placeholder-gray-400 border-none" />
+                        <img id="buscarIcon" src="{{ asset('assets/img/Buscar.png') }}" alt="Logo usuario" class="h-8 border-none"/>
+                    </div>
+                </form>
 
 
             </div>
@@ -223,4 +227,12 @@
         </div>
     </div>
 
+    <script>
+        let buscarBtn = document.querySelector('#buscarIcon');
+        let form = document.querySelector('#buscarForm');
+        buscarBtn.addEventListener('click', (e) => {
+            form.submit();
+            console.log('submit');
+        })
+    </script>
 </nav>

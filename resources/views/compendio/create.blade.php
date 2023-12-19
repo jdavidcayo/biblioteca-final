@@ -27,7 +27,7 @@
                                     <div class="form-group d-flex">
                                         <div class="form-group mr-2">
                                             <label class="text-secondary">Autoridad</label>
-                                            <select name="autoridad" id="autoridadSelect" class="form-control item">
+                                            <select name="autoridad" id="autoridadSelect" class="form-select item">
                                                 @forelse ($autoridades as $autoridad)
                                                     <option value="{{ $autoridad->id }}">{{ $autoridad->nombre }} </option>
                                                 @empty
@@ -54,11 +54,11 @@
 
                                         <div class="item-fecha">
                                             <label class="text-secondary">Año</label>
-                                            <select class="form-control" name="anio" required>
+                                            <select class="form-select" name="anio" required>
                                                 @php
                                                     $currentYear = date('Y');
                                                     $startYear = $currentYear;
-                                                    $endYear = $currentYear - 20; // Ajusta según tus necesidades
+                                                    $endYear = $currentYear - 40; 
                                                 @endphp
 
                                                 @for ($year = $startYear; $year >= $endYear; $year--)
@@ -70,14 +70,14 @@
 
                                         <div class="item-estado">
                                             <label class="text-secondary">Estado</label>
-                                            <select name="estado" id="idSelect" class="form-control">
+                                            <select name="estado" id="idSelect" class="form-select">
                                                 <option value="1">Activo</option>
                                                 <option value="0">Borrador</option>
                                             </select>
                                         </div>
 
                                         <div class="item-archivo">
-                                            <label class="text-secondary">Archivo</label>
+                                            <label class="text-secondary">Archivo de imagen</label>
                                             <input type="file" name="urlImagen" id="urlImagen" class="form-control"
                                                 accept="image/jpeg, image/png">
                                         </div>
@@ -88,12 +88,18 @@
 
                                         <div class="item">
                                             <label class="text-secondary">Criterio</label>
-                                            <input type="text" name='criterio' class="form-control"
-                                                placeholder="Criterio">
+                                            <select name="criterio" id="criterioId" class="form-select">
+                                                <option value="0"></option>
+                                                @foreach ($criterios as $criterio)
+                                                    <option value="{{ $criterio->id }}">{{ $criterio->nombre }}</option>
+                                                @endforeach
+
+                                            </select>
+
                                         </div>
 
                                         <div class="item-archivo">
-                                            <label class="text-secondary">Documento</label>
+                                            <label class="text-secondary">Documento pdf</label>
                                             <input type="file" name="urlDocumento" id="urlDocumento" class="form-control"
                                                 accept="application/pdf">
                                         </div>
@@ -102,7 +108,7 @@
 
                                     <div class="box-footer mt20 ">
                                         <button type="submit" class="btn btn-primary ">CREAR</button>
-                                        <a href="{{ route("compendio.admin") }}" class="btn btn-secondary">CANCELAR</a>
+                                        <a href="{{ route('compendio.admin') }}" class="btn btn-secondary">CANCELAR</a>
                                     </div>
                                 </div>
 

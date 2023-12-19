@@ -329,7 +329,7 @@ return [
             'icon' => 'fas fa-fw fa-file',
         ],
         [
-            'text'    => 'Entidades',
+            'text'    => 'ENTIDADES',
             'icon'    => 'fas fa-database',
             'submenu' => [
                 [
@@ -345,6 +345,11 @@ return [
                 [
                     'text' => 'Áreas',
                     'url'  => 'admin/areas',
+                    'icon' => 'fas fa-file',
+                ],
+                [
+                    'text' => 'Criterios',
+                    'url'  => 'admin/criterio',
                     'icon' => 'fas fa-file',
                 ],
             ]

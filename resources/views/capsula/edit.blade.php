@@ -15,7 +15,7 @@
                 <div class="card card-default">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('capsulas.update', $compendio->id) }}" role="form"
+                        <form method="POST" action="{{ route('capsulas.update', $capsula) }}" role="form"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
@@ -26,13 +26,13 @@
                                     <div class="form-group">
                                         <label class="text-secondary">Titulo</label>
                                         <input type="text" name='titulo' class="form-control" placeholder="Titulo"
-                                            required value="{{ $compendio->titulo }}">
+                                            required value="{{ $capsula->titulo }}">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-secondary">Síntesis</label>
                                         <input type="text" name="descripcion" id="descripcion"
-                                            value="{{ $compendio->descripcion }}" hidden>
+                                            value="{{ $capsula->descripcion }}" hidden>
                                         <trix-editor input="descripcion"></trix-editor>
                                     </div>
 
@@ -40,35 +40,35 @@
                                         <div class="item-fecha">
                                             <label class="text-secondary">Fecha</label>
                                             <input type="date" name='fecha' class="form-control" placeholder="Fecha"
-                                                value="{{ $compendio->fecha ?? '' }}">
+                                                value="{{ $capsula->fecha ?? '' }}">
                                         </div>
                                         <div class="item-estado">
                                             <label class="text-secondary">Estado</label>
                                             <select name="estado" id="idSelect" class="form-control">
 
-                                                <option value="1"@if ($compendio->estado == 1) selected @endif>
+                                                <option value="1"@if ($capsula->estado == 1) selected @endif>
                                                     Activo</option>
-                                                <option value="0" @if ($compendio->estado == 0) selected @endif>
+                                                <option value="0" @if ($capsula->estado == 0) selected @endif>
                                                     Borrador</option>
                                             </select>
                                         </div>
                                         <div class="item-archivo">
                                             <label class="text-secondary">imagen</label>
                                             <input type="file" name="urlImagen" id="urlImagen" class="form-control"
-                                                value="{{ $compendio->urlImagen }}">
+                                                value="{{ $capsula->urlImagen }}">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-secondary">Enlace</label>
                                         <input type="text" name='url' class="form-control" placeholder="Url"
-                                            value="{{ $compendio->url }}">
+                                            value="{{ $capsula->url }}">
                                     </div>
 
                                 </div>
                                 <div class="box-footer mt20">
                                     <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
-                                    <a href="{{ route('compendio.admin') }}" class="btn btn-secondary">CANCELAR</a>
+                                    <a href="{{ route('capsula.admin') }}" class="btn btn-secondary">CANCELAR</a>
                                 </div>
 
                             </div>

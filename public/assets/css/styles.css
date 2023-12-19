@@ -134,3 +134,16 @@ th-primary {
     font-size: 1.4rem;
     
 }
+
+.btn-xsm {
+    height: 80%;
+}
+
+/* tabla descripcion */
+
+.limitedCell {
+    max-width: 400px !important;
+    max-height: 3em !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}

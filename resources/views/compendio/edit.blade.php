@@ -44,7 +44,8 @@
 
                                     <div class="form-group">
                                         <label class="text-secondary">Síntesis</label>
-                                        <input type="text" name="descripcion" id="descripcion" hidden>
+                                        <input type="text" name="descripcion" id="descripcion" hidden
+                                            value="{{ $compendio->descripcion }}">
                                         <trix-editor input="descripcion" value="text"></trix-editor>
                                     </div>
 
@@ -56,11 +57,13 @@
                                                 @php
                                                     $currentYear = date('Y');
                                                     $startYear = $currentYear;
-                                                    $endYear = $currentYear - 20; // Ajusta según tus necesidades
+                                                    $endYear = $currentYear - 40; 
                                                 @endphp
 
                                                 @for ($year = $startYear; $year >= $endYear; $year--)
-                                                    <option value="{{ $year }}">{{ $year }}</option>
+                                                    <option value="{{ $year }}"
+                                                        @if ($year == $compendio->anio) selected="selected" @endif>
+                                                        {{ $year }}</option>
                                                 @endfor
                                             </select>
                                         </div>
@@ -69,13 +72,15 @@
                                         <div class="item-estado">
                                             <label class="text-secondary">Estado</label>
                                             <select name="estado" id="idSelect" class="form-control">
-                                                <option value="1">Activo</option>
-                                                <option value="0">Borrador</option>
+                                                <option value="1" @if ($compendio->estado == 1)
+                                                    selected="selected" @endif>Activo</option>
+                                                <option value="0" @if ($compendio->estado == 0)
+                                                    selected="selected" @endif>Borrador</option>
                                             </select>
                                         </div>
 
                                         <div class="item-archivo">
-                                            <label class="text-secondary">Archivo</label>
+                                            <label class="text-secondary">Archivo de imagen</label>
                                             <input type="file" name="urlImagen" id="urlImagen" class="form-control"
                                                 accept="image/jpeg, image/png">
                                         </div>
@@ -86,12 +91,21 @@
 
                                         <div class="item">
                                             <label class="text-secondary">Criterio</label>
-                                            <input type="text" name='criterio' class="form-control"
-                                                placeholder="Criterio">
+                                            <select name="criterio" id="criterioId" class="form-select">
+                                                <option value="0"></option>   
+                                                @foreach ($criterios as $criterio)
+                                                    <option value="{{ $criterio->id }}" @if ($criterio->id == $compendio->criterio) selected
+                                                        
+                                                    @endif>{{ $criterio->nombre }}</option> 
+                                                @endforeach
+
+                                            </select>
+
+
                                         </div>
 
                                         <div class="item-archivo">
-                                            <label class="text-secondary">Documento</label>
+                                            <label class="text-secondary">Documento PDF</label>
                                             <input type="file" name="urlDocumento" id="urlDocumento" class="form-control"
                                                 accept="application/pdf">
                                         </div>
@@ -99,7 +113,7 @@
                                     </div>
 
                                     <div class="box-footer mt20 ">
-                                        <button type="submit" class="btn btn-primary ">CREAR</button>
+                                        <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
                                         <a href="{{ route('compendio.admin') }}" class="btn btn-secondary">CANCELAR</a>
                                     </div>
                                 </div>
