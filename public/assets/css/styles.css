@@ -147,3 +147,7 @@ th-primary {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
 }
+
+.acciones {
+    width: 150px !important;
+}
