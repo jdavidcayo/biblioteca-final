@@ -1,5 +1,8 @@
-let items = document.querySelectorAll('.sidebar > nav > ul > li > a > p');
+let userName = document.querySelector("body > div > nav > ul.navbar-nav.ml-auto > li > a > span")
 
-let spanCompendio = document.createElement('span')
-spanCompendio.classList.add('ico-compendio')
-items[5].appendChild(spanCompendio)
+console.log(userName.innerHTML);
+
+userName.innerHTML = 'Hola! <b>' + userName.textContent + '</b>' ;
+
+
+

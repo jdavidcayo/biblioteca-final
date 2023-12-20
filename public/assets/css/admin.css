@@ -37,5 +37,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #f3d2d7 !important;
 }
 
+.wrapper > nav {
+    height: 70px !important;
+}
+
+nav > ul > li > a.nav-link > span{
+    color: white;
+}
 
 
