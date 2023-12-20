@@ -50,7 +50,7 @@
                                     <div class="form-group d-flex flex-col justify-content-between mt-4">
                                         <div class="">
                                             <label class="text-secondary">Archivo</label>
-                                            <input type="file" name="urlArchivo" id="urlArchivo" class="form-control"
+                                            <input type="file" accept=".doc, .docx, .ppt, .pptx, .xls, .xlsx, .pdf" name="urlArchivo" id="urlArchivo" class="form-control"
                                                 value="{{ $formato->urlDocumento }}">
                                         </div>
 

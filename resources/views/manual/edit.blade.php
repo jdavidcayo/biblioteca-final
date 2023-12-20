@@ -46,13 +46,13 @@
                                     </div>
                                     <div class="item-archivo">
                                         <label class="text-secondary">imagen</label>
-                                        <input type="file" name="urlImagen" id="urlImagen" class="form-control" value="{{ $manual->urlImagen }}">
+                                        <input type="file" accept="image/jpeg, image/png" name="urlImagen" id="urlImagen" class="form-control" value="{{ $manual->urlImagen }}">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Documento</label>
-                                    <input type="file" name="urlDocumento" id="urlDocumento" class="form-control" value="{{ $manual->urlDocumento }}">
+                                    <input type="file" accept="application/pdf" name="urlDocumento" id="urlDocumento" class="form-control" value="{{ $manual->urlDocumento }}">
                                 </div>
 
                             </div>

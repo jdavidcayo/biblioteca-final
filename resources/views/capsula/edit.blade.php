@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="item-archivo">
                                             <label class="text-secondary">imagen</label>
-                                            <input type="file" name="urlImagen" id="urlImagen" class="form-control"
+                                            <input type="file" accept="image/jpeg, image/png" name="urlImagen" id="urlImagen" class="form-control"
                                                 value="{{ $capsula->urlImagen }}">
                                         </div>
                                     </div>

@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="item-archivo">
                                         <label class="text-secondary">imagen</label>
-                                        <input type="file" name="urlImagen" id="urlImagen" class="form-control" value="{{ $folleto->urlImagen }}">
+                                        <input type="file" accept="image/jpeg, image/png" name="urlImagen" id="urlImagen" class="form-control" value="{{ $folleto->urlImagen }}">
                                     </div>
                                 </div>
                                 

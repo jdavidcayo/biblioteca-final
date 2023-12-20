@@ -50,14 +50,14 @@
                                         </div>
                                         <div class="item-archivo">
                                             <label class="text-secondary">imagen</label>
-                                            <input type="file" name="urlImagen" id="urlImagen" class="form-control">
+                                            <input type="file" accept="image/jpeg, image/png" name="urlImagen" id="urlImagen" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="form-group d-flex flex-col justify-content-between mt-4">
                                         <div class="item">
                                             <label class="text-secondary">Documento</label>
-                                            <input type="file" name="urlDocumento" id="urlDocumento"
+                                            <input type="file" accept="application/pdf" name="urlDocumento" id="urlDocumento"
                                                 class="form-control">
                                         </div>
                                         <div class="item">
