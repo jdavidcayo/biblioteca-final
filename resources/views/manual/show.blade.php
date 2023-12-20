@@ -21,13 +21,13 @@
     <div class="container">
         <div class="d-flex flex-row justify-content-between mb-2">
             <h4>{{ $manual->titulo }}</h4>
-            <a href="{{ asset($manual->urlDocumento) }}" download">
+            <a href="{{ asset($manual->urlDocumento) }}" download>
                 <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm">DESCARGAR</button>
             </a>
         </div>
         <hr>
         <div class="d-flex flex-column align-items-center mt-4">
-            {{ dump($manual->urlDocumento) }}
+            
             <iframe src="{{ asset($manual->urlDocumento) }}" frameborder="0" width="80%" height="900px"></iframe>
         </div>
     </div>

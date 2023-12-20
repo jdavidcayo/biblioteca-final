@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     
                                         <label class="text-secondary">Descripción</label>
-                                        <input type="text" name='descripcion' class="form-control" placeholder="Descripción">
+                                        <input type="text" name='descripcion' class="form-control" placeholder="Descripción" required>
                                     
                                 </div>
                                 

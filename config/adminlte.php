@@ -292,7 +292,11 @@ return [
     */
 
     'menu' => [
-        
+        [  
+            'text' => 'USUARIOS',
+            'url' => 'admin/usuarios',
+            'icon' => 'fas fa-fw fa-file',
+        ],
         [
             'text' => 'MANUALES',
             'url'  => 'admin/manuales',

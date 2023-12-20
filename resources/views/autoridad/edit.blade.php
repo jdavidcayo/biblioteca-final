@@ -33,7 +33,7 @@
 
                                         <label class="text-secondary">Descripción</label>
                                         <input type="text" name='descripcion' class="form-control"
-                                            placeholder="Descripción" value="{{ $autoridad->descripcion }}">
+                                            placeholder="Descripción" value="{{ $autoridad->descripcion }}" require>
 
                                     </div>
 
