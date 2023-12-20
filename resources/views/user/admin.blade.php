@@ -7,7 +7,7 @@
 
 @stop
 @section('content')
-<div class="container col-md-10 mt-4">
+<div class="container col-md-10">
     <div class="w-100 bg-admin-card-title p-1">
         <a href="{{ route('usuarios.create') }}" class="text-white text-decoration-none font-gothamBold "> 
             +
