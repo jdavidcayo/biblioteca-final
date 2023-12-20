@@ -49,7 +49,7 @@
                                         <div class="">
                                             <label class="text-secondary">Archivo</label>
                                             <span id="nombreArchivo">Text</span>
-                                            <input type="file" name="urlArchivo" id="urlArchivo" class="form-control" value="{{ $catalogo->urlDocumento }}">
+                                            <input type="file" accept="application/pdf" name="urlArchivo" id="urlArchivo" class="form-control" value="{{ $catalogo->urlDocumento }}">
                                         </div>
                                     </div>
 

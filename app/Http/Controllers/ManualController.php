@@ -14,7 +14,7 @@ class ManualController extends Controller
 
     public function index()
     {
-        $manuales = Manual::paginate(20);
+        $manuales = Manual::where('estado', '1')->paginate(20);
         return view("manual.index", compact("manuales"));
     }
 

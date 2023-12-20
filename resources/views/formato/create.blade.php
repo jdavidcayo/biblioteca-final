@@ -45,12 +45,13 @@
                                 <div class="form-group d-flex flex-col justify-content-between mt-4">
                                     <div class="">
                                         <label class="text-secondary">Archivo</label>
-                                        <input type="file" name="urlArchivo" id="urlArchivo" class="form-control">
+                                        <input type="file" accept=".doc, .docx, .ppt, .pptx, .xls, .xlsx, .pdf" name="urlArchivo" id="urlArchivo" class="form-control">
                                     </div>
                                     
                                     <div class="item">
                                         <label class="text-secondary">Tema</label>
                                         <select name="tema" id="idTemaSelect" class="form-control">
+                                            <option value="">Seleccionar tema</option>
                                             @forelse ( $temas as $tema)
                                                 <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
                                             @empty
@@ -63,7 +64,8 @@
 
                                 <div class="form-group">
                                     <label class="text-secondary">Organismo</label>
-                                    <select name="organizacion" id="idOrganizacionSelect" class="form-control">
+                                    <select name="autoridad" id="idOrganizacionSelect" class="form-control">
+                                        <option value="">Seleccionar organismo</option>
                                         @forelse ( $autoridades as $autoridad)
                                             <option value="{{ $autoridad->id }}">{{ $autoridad->nombre }}</option>
                                         @empty

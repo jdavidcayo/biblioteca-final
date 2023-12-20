@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedInteger('autoridadId')->nullable();
             $table->unsignedInteger('autorId')->nullable();
             $table->unsignedInteger('estado')->nullable();
-            $table->string('acuerdo')->nullable();
-            $table->string('sentencia')->nullable();
-            $table->string('descripcion')->nullable();
+            // $table->string('acuerdo')->nullable();
+            // $table->string('sentencia')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('urlImagen')->nullable();
             $table->string('urlDocumento')->nullable();
             $table->date('fecha')->nullable();

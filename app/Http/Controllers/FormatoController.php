@@ -14,7 +14,7 @@ class FormatoController extends Controller
      */
     public function index()
     {
-        $formatos = Formato::paginate(20);
+        $formatos = Formato::where('estado', '1')->paginate(20);
         return view("formato.index", compact("formatos"));
     }
 
@@ -45,6 +45,8 @@ class FormatoController extends Controller
         $formato->fecha = $request->fecha;
         $formato->estado = $request->estado;
         $formato->autorId = $request->user()->id;
+        $formato->autoridadId = $request->autoridad;
+        $formato->temaId = $request->tema;
         
         if ($request->hasFile("urlArchivo")) {
             $file = $request->file("urlArchivo");
@@ -62,6 +64,8 @@ class FormatoController extends Controller
         $urlImagenThumb = asset("assets/img/ICONO-Formatos.png");
         $formato->urlImagenThumb = $urlImagenThumb;
             
+        } else {
+            $formato->urlImagenThumb = asset('assets/img/ICONO-Formatos.png');
         }
         
         $formato->save();
@@ -75,7 +79,9 @@ class FormatoController extends Controller
     public function edit(string $id)
     {
         $formato = Formato::find($id);
-        return view("formato.edit", compact("formato"));
+        $temas = Tema::all();
+        $autoridades = Autoridad::all();
+        return view("formato.edit", compact("formato", 'temas', 'autoridades'));
     }
 
     /**
@@ -87,6 +93,8 @@ class FormatoController extends Controller
         $formato->titulo = $request->titulo;
         $formato->fecha = $request->fecha;
         $formato->estado = $request->estado;
+        $formato->autoridadId = $request->autoridad;
+        $formato->temaId = $request->tema;
         
         
         if ($request->hasFile("urlArchivo")) {
@@ -105,7 +113,9 @@ class FormatoController extends Controller
         $urlImagenThumb = asset("assets/img/ICONO-Formatos.png");
         $formato->urlImagenThumb = $urlImagenThumb;
             
-        }
+    } else {
+        $formato->urlImagenThumb = asset('assets/img/ICONO-Formatos.png');
+    }
         
         $formato->save();
         return redirect()->route('formato.admin');
@@ -119,5 +129,11 @@ class FormatoController extends Controller
         $formato = Formato::find($id);
         $formato->delete();
         return redirect()->route('formato.admin');
+    }
+
+    public function show(string $id)
+    {
+        $formato = Formato::find($id);
+        return view('formato.show', compact('formato'));
     }
 }

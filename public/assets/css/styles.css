@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cardEffect:hover {
-    transform: scale(1.05); 
+    transform: scale(1.01); 
 }
 
 .navLink {
@@ -120,4 +120,30 @@ h1, h2, h3, h4, h5, h6 {
 th-primary {
     background-color: #5d1250 !important;
     color: white !important;
+}
+
+
+/* Tabla Documentos */
+.table-hover tbody tr:hover {
+    transform: scale(1.02); 
+    transition: transform 0.3s ease-in-out; 
+  }
+
+.cardTitleDocumento {
+    font-family: 'gotham-bold';
+    font-size: 1.4rem;
+    
+}
+
+.btn-xsm {
+    height: 80%;
+}
+
+/* tabla descripcion */
+
+.limitedCell {
+    max-width: 400px !important;
+    max-height: 3em !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }

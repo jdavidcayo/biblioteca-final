@@ -14,7 +14,7 @@
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item">
                             
-                            <a href="{{ $catalogo->urlDocumento }}" download="{{ $catalogo->titulo . ".pdf" }}">
+                            <a href="{{ $catalogo->urlDocumento }}" download>
                                 <button type="button"
                                 class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>

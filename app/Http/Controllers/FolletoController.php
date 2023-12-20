@@ -14,7 +14,7 @@ class FolletoController extends Controller
      */
     public function index()
     {
-        $folletos= Folleto::paginate(20);
+        $folletos= Folleto::where('estado', '1')->paginate(20);
         return view("folleto.index",compact("folletos"));
     }
 
@@ -76,12 +76,11 @@ class FolletoController extends Controller
     {
         $folleto = Folleto::find($id);
 
-        // Verifica si el folleto existe
         if (!$folleto) {
             abort(404);
         }
     
-        return view('folletos.index', compact('folleto'));
+        return view('folleto.show', compact('folleto'));
     }
 
     /**

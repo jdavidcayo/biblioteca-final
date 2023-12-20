@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Manuales')
+@section('title', 'Documentos')
 
 @section('content_header')
-<h3 class="text-secondary my-2 px-2" style="background-color: #fcd5c9">MANUALES</h3>
+<h3 class="text-secondary my-2 px-2" style="background-color: #fcd5c9">DOCUMENTOS</h3>
 @stop
 
 @section('content')
@@ -15,54 +15,87 @@
             <div class="card card-default">
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('manuales.update', $manual->id) }}"  role="form" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
+                    <form method="POST" action="{{ route('documentos.update', $documento) }}" role="form"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
-                        <div class="box box-info padding-1">
-                            <div class="box-body">
-                                
-                                <div class="form-group">
-                                    <label class="text-secondary">Titulo</label>
-                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" required value="{{$manual->titulo}}">
-                                </div>
-                                
-                                <div class="form-group d-flex flex-col justify-content-between mt-4">
-                                    <div class="item-fecha">
-                                        <label class="text-secondary">Fecha</label>
-                                        <input type="date" name='fecha' class="form-control" placeholder="Fecha" value="{{ $manual->fecha }}">
+                            <div class="box box-info padding-1">
+                                <div class="box-body">
+
+                                    <div class="form-group">
+                                        <label class="text-secondary">Titulo</label>
+                                        <input type="text" name='titulo' class="form-control" placeholder="Titulo" value="{{ $documento->titulo }}"
+                                            required>
                                     </div>
-                                    <div class="item-estado">
-                                        <label class="text-secondary">Estado</label>
-                                        <select name="estado" id="idSelect" class="form-control" value="{{ $manual->estado }}">
-            
-                                            <option value="1" @if ($manual->estado == 1)
-                                                selected="selected" @endif>Activo</option>
-                                            <option value="0" @if ($manual->estado == 0)
-                                                selected="selected" @endif>Borrador</option>
-                                            
+
+                                    <div class="form-group">
+                                        <label class="text-secondary">Síntesis</label>
+                                        <input type="text" name="descripcion" id="descripcion" hidden value="{{ $documento->descripcion }}">
+                                        <trix-editor input="descripcion"></trix-editor>
+                                    </div>
+
+                                    <div class="form-group d-flex flex-col justify-content-between mt-4">
+                                        <div class="item-fecha">
+                                            <label class="text-secondary">Fecha</label>
+                                            <input type="date" name='fecha' class="form-control" placeholder="Fecha" value="{{ $documento->fecha }}">
+                                        </div>
+                                        <div class="item-estado">
+                                            <label class="text-secondary">Estado</label>
+                                            <select name="estado" id="idSelect" class="form-control">
+                                                <option value="1" {{ $documento->estado == 1 ? 'selected' : '' }}>Activo</option>
+                                                <option value="0" {{ $documento->estado == 0 ? 'selected' : '' }}>Borrador</option>
+                                            </select>
+                                        </div>
+                                        <div class="item-archivo">
+                                            <label class="text-secondary">imagen</label>
+                                            <input type="file" accept="image/jpeg, image/png" name="urlImagen" id="urlImagen" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group d-flex flex-col justify-content-between mt-4">
+                                        <div class="item">
+                                            <label class="text-secondary">Documento</label>
+                                            <input type="file" accept="application/pdf" name="urlDocumento" id="urlDocumento"
+                                                class="form-control">
+                                        </div>
+                                        <div class="item">
+                                            <label class="text-secondary">Tema</label>
+                                            <select name="tema" id="temaSelect" class="form-control">
+                                                <option value="">Seleccionar tema.</option>
+                                                @forelse ($temas as $tema)
+                                                    <option value="{{ $tema->id }}"@if ( $tema->id == $documento->temaId)
+                                                        selected
+                                                    @endif>{{ $tema->nombre }}</option>
+                                                @empty
+                                                    <option value="">No hay temas.</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-secondary">Autoridad</label>
+                                        <select name="autoridad" id="autoridadSelect" class="form-control item">
+                                            <option value="">Seleccionar autoridad.</option>
+                                            @forelse ($autoridades as $autoridad)
+                                                    <option value="{{ $autoridad->id }}"@if ( $autoridad->id == $documento->autoridadId)
+                                                        selected
+                                                    @endif>{{ $autoridad->nombre }}</option>
+                                                @empty
+                                                    <option value="">No hay autoridades.</option>
+                                                @endforelse
                                         </select>
-                                        <script>console.log("{{ $manual->estado }}")</script>
+                                        
                                     </div>
-                                    <div class="item-archivo">
-                                        <label class="text-secondary">imagen</label>
-                                        <input type="file" name="urlImagen" id="urlImagen" class="form-control" value="{{ $manual->urlImagen }}">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="text-secondary">Documento</label>
-                                    <input type="file" name="urlDocumento" id="urlDocumento" class="form-control" value="{{ $manual->urlDocumento }}">
-                                </div>
 
+                                <div class="box-footer mt20">
+                                    <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
+                                    <a href="{{ route('documento.admin') }}" class="btn btn-secondary">CANCELAR</a>
+                                </div>
                             </div>
-                            <div class="box-footer mt20">
-                                <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
-                                <a href="{{ route( "manual.admin" )}}" class="btn btn-secondary">CANCELAR</a>
-                            </div>
-                        </div>
-
-                    </form>
+                        </form>
                 </div>
             </div>
         </div>

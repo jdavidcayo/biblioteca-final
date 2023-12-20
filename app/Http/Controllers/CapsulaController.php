@@ -15,7 +15,7 @@ class CapsulaController extends Controller
 
     public function index()
     {
-        $capsulas = Capsula::paginate(20);
+        $capsulas = Capsula::where('estado', '1')->paginate(20);
         return view('capsula.index', compact('capsulas'));
     }
 
@@ -31,8 +31,8 @@ class CapsulaController extends Controller
 
     public function show($id)
     {
-        // $capsula = Capsula::find($id);
-        // return view('capsula.show', compact('capsula'));
+        $capsula = Capsula::find($id);
+        return view('capsula.show', compact('capsula'));
     }
 
     public function edit($id)
@@ -50,12 +50,26 @@ class CapsulaController extends Controller
 
     public function store(Request $request)
     {
+        $url = '';
         $capsula = new Capsula();
         $capsula->titulo = $request->titulo;
         $capsula->descripcion = $request->descripcion;
+        
+        
+        $iframeCode = $request->url;
+        $srcStart = strpos($iframeCode, 'src="');
+        if ($srcStart !== false) {
+            $srcStart += strlen('src="'); 
+            $srcEnd = strpos($iframeCode, '"', $srcStart);
+            if ($srcEnd !== false) {
+            $url = substr($iframeCode, $srcStart, $srcEnd - $srcStart);
+            } 
+        }
+
+        $capsula->url = $url;
+        
         $capsula->fecha = $request->fecha;
         $capsula->estado = $request->estado;
-        $capsula->url = $request->url;
         $capsula->autorId = $request->user()->id;
         
         if ($request->hasFile("urlImagen")) {
@@ -87,17 +101,28 @@ class CapsulaController extends Controller
         request()->validate([
             'titulo' => 'required',
             'descripcion' => 'required',
-            'url' => 'required',
         ]);
 
         request()->validate([
-            'urlImagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'urlImagen' => 'image|mimes:jpeg,png,jpg',
         ]);
 
+        $url = '';
         $capsula = Capsula::find($id);
         $capsula->titulo = $request->titulo;
         $capsula->descripcion = $request->descripcion;
-        $capsula->url = $request->url;
+
+        $iframeCode = $request->url;
+        $srcStart = strpos($iframeCode, 'src="');
+        if ($srcStart !== false) {
+            $srcStart += strlen('src="'); 
+            $srcEnd = strpos($iframeCode, '"', $srcStart);
+            if ($srcEnd !== false) {
+            $url = substr($iframeCode, $srcStart, $srcEnd - $srcStart);
+            } 
+        }
+        $capsula->url = $url;
+
         $capsula->fecha = $request->fecha;
         $capsula->estado = $request->estado;
         

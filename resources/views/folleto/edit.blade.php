@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="item-archivo">
                                         <label class="text-secondary">imagen</label>
-                                        <input type="file" name="urlImagen" id="urlImagen" class="form-control" value="{{ $folleto->urlImagen }}">
+                                        <input type="file" accept="image/jpeg, image/png" name="urlImagen" id="urlImagen" class="form-control" value="{{ $folleto->urlImagen }}">
                                     </div>
                                 </div>
                                 
@@ -55,7 +55,7 @@
                             </div>
                             <div class="box-footer mt20">
                                 <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
-                                <a href="{{ route( "manual.admin" )}}" class="btn btn-secondary">CANCELAR</a>
+                                <a href="{{ route( "folleto.admin" )}}" class="btn btn-secondary">CANCELAR</a>
                             </div>
                         </div>
 

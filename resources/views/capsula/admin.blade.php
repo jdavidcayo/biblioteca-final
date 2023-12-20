@@ -8,7 +8,7 @@
 </div>    
 @stop
 @section('content')
-<div class="container col-md-10">
+<div class="container col-md-12">
     <div class="w-100 bg-admin-card-title p-1">
         <a href="{{ route('capsulas.create') }}" class="text-white text-decoration-none font-gothamBold "> 
             +

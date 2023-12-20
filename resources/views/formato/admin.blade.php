@@ -3,12 +3,10 @@
 @section('title', 'Formatos')
 
 @section('content_header')
-<div class="w-100 bg-admin-section-title p-2">
-    FORMATOS
-</div>    
+<h3 class="text-secondary px-2" style="background-color: #fcd5c9">FORMATOS</h3>    
 @stop
 @section('content')
-<div class="container col-md-10">
+<div class="container col-md-12">
     <div class="w-100 bg-admin-card-title p-1">
         <a href="{{ route('formatos.create') }}" class="text-white text-decoration-none font-gothamBold "> 
             +

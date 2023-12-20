@@ -13,7 +13,7 @@
                     <img src="{{ $manual->urlImagen }}" class="" alt="Manual img" width="100px" height="150px">
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item">
-                            <a href="{{ $manual->urlDocumento }}" download="{{ $manual->titulo . ".pdf" }}">
+                            <a href="{{ $manual->urlDocumento }}" download>
                                 <button type="button"
                                 class="btn btn-warning text-morado hover:text-white btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>
