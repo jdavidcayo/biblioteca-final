@@ -3,9 +3,7 @@
 @section('title', 'Compendios')
 
 @section('content_header')
-    <div class="w-100 bg-admin-section-title p-2">
-        COMPENDIOS
-    </div>
+    <h3 class="text-secondary px-2" style="background-color: #fcd5c9">COMPENDIOS</h3>
 @stop
 @section('content')
     <div class="container col-md-12">
