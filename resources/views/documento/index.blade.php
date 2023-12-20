@@ -45,7 +45,7 @@
 
 
         @forelse ($documentos as $documento)
-            <div class="card mb-3 col-md-12 border-fucsia border-2 cardEffect">
+            <div class="card mb-3 col-md-12 border-fucsia border-1 cardEffect">
                 <div class="row g-0">
                     <div class="col-md-2 my-1 p-2">
                         <img src="{{ "../" . $documento->urlImagen }}" width="150px" height="150px" alt="icono documento">
@@ -61,7 +61,7 @@
                         @if ($documento->urlDocumento == null)
                             <button class="btn btn-secondary rounded-pill" disabled>SIN DOCUMENTO</button>
                         @else
-                        <a href="{{ $documento->urlDocumento }}" download="{{ $documento->titulo . ".pdf"}}">
+                        <a href="{{ $documento->urlDocumento }}" download>
                             <button class="btn btn-warning text-white rounded-pill">DESCARGAR</button>
                         </a>
                         @endif

@@ -62,10 +62,15 @@
                                         </div>
                                         <div class="item">
                                             <label class="text-secondary">Tema</label>
-                                            <select name="temaSelect" id="temaSelect" class="form-control">
-                                                @foreach ($temas as $tema)
+                                            <select name="tema" id="temaSelect" class="form-control">
+                                                <option value="">Seleccionar tema</option>
+
+                                                @forelse ($temas as $tema)
                                                     <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
-                                                @endforeach
+                                                @empty
+                                                    <option value="">No hay temas.</option>
+                                                @endforelse
+
                                             </select>
                                         </div>
 
@@ -73,19 +78,21 @@
 
                                     <div class="form-group">
                                         <label class="text-secondary">Autoridad</label>
-                                        <select name="autoridadSelect" id="autoridadSelect" class="form-control item">
-                                            <option value="0">-</option>
-                                            @foreach ($autoridades as $autoridad)
+                                        <select name="autoridad" id="autoridadSelect" class="form-control item">
+                                            <option value="">Seleccionar autoridad</option>
+                                            @forelse ($autoridades as $autoridad)
                                                 <option value="{{ $autoridad->id }}">{{ $autoridad->nombre }}</option>
-                                            @endforeach 
+                                            @empty
+                                                <option value="">No hay autoridades.</option>
+                                            @endforelse
                                         </select>
                                     </div>
 
-                                <div class="box-footer mt20">
-                                    <button type="submit" class="btn btn-primary ">CREAR</button>
-                                    <a href="{{ route('documento.admin') }}" class="btn btn-secondary">CANCELAR</a>
+                                    <div class="box-footer mt20">
+                                        <button type="submit" class="btn btn-primary ">CREAR</button>
+                                        <a href="{{ route('documento.admin') }}" class="btn btn-secondary">CANCELAR</a>
+                                    </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>

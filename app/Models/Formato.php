@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Autoridad;
+use App\Models\Tema;
+use App\Models\User;
+
 
 class Formato extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
-
-        "titulo","urlImagen","urlDocumento"];
+        "titulo","urlImagen","urlDocumento"
+    ];
 
         protected $title = "formatos";
     
@@ -19,9 +23,14 @@ class Formato extends Model
         {
             return $this->belongsTo(Autoridad::class, 'autoridadId');
         }
+
         public function tema()
         {
             return $this->belongsTo(Tema::class, 'temaId');
         }
-        
+
+        public function autor()
+        {
+            return $this->belongsTo(User::class, 'autorId');
+        }
 }

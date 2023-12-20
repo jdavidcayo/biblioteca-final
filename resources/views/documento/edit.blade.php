@@ -61,10 +61,15 @@
                                         </div>
                                         <div class="item">
                                             <label class="text-secondary">Tema</label>
-                                            <select name="temaSelect" id="temaSelect" class="form-control">
-                                                @foreach ($temas as $tema)
-                                                    <option value="{{ $tema->id }}" {{ $documento->temaId == $tema->id ? 'selected' : '' }}>{{ $tema->nombre }}</option>
-                                                @endforeach
+                                            <select name="tema" id="temaSelect" class="form-control">
+                                                <option value="">Seleccionar tema.</option>
+                                                @forelse ($temas as $tema)
+                                                    <option value="{{ $tema->id }}"@if ( $tema->id == $documento->temaId)
+                                                        selected
+                                                    @endif>{{ $tema->nombre }}</option>
+                                                @empty
+                                                    <option value="">No hay temas.</option>
+                                                @endforelse
                                             </select>
                                         </div>
 
@@ -72,11 +77,15 @@
 
                                     <div class="form-group">
                                         <label class="text-secondary">Autoridad</label>
-                                        <select name="autoridadSelect" id="autoridadSelect" class="form-control item">
-                                            <option value="0"></option>
-                                            @foreach ($autoridades as $autoridad)
-                                                <option value="{{ $autoridad->id }}" {{ $documento->autoridadId == $autoridad->id ? 'selected' : '' }}>{{ $autoridad->nombre }}</option>
-                                            @endforeach 
+                                        <select name="autoridad" id="autoridadSelect" class="form-control item">
+                                            <option value="">Seleccionar autoridad.</option>
+                                            @forelse ($autoridades as $autoridad)
+                                                    <option value="{{ $autoridad->id }}"@if ( $autoridad->id == $documento->autoridadId)
+                                                        selected
+                                                    @endif>{{ $autoridad->nombre }}</option>
+                                                @empty
+                                                    <option value="">No hay autoridades.</option>
+                                                @endforelse
                                         </select>
                                         
                                     </div>

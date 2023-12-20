@@ -15,7 +15,7 @@
                 <div class="card card-default">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('formatos.update', $formato->id) }}" role="form"
+                        <form method="POST" action="{{ route('formatos.update', $formato) }}" role="form"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -50,13 +50,23 @@
                                     <div class="form-group d-flex flex-col justify-content-between mt-4">
                                         <div class="">
                                             <label class="text-secondary">Archivo</label>
-                                            <input type="file" name="urlArchivo" id="urlArchivo" class="form-control" value="{{ $formato->urlDocumento }}">
+                                            <input type="file" name="urlArchivo" id="urlArchivo" class="form-control"
+                                                value="{{ $formato->urlDocumento }}">
                                         </div>
 
                                         <div class="item">
                                             <label class="text-secondary">Tema</label>
-                                            <select name="tema" id="idTemaSelect" class="form-control">
-                                                {{-- consultar --}}
+                                            <select name="tema" id="idTemaSelect" class="form-control item">
+                                                <option value="" @if ($formato->temaId == "")
+                                                    selected
+                                                @endif>Seleccionar tema</option>
+                                                @forelse ($temas as $tema)
+                                                    <option value="{{ $tema->id }}"
+                                                        @if ($tema->id == $formato->temaId) selected @endif>
+                                                        {{ $tema->nombre }}</option>
+                                                @empty
+                                                    <option value="0">No hay temas registrados.</option>
+                                                @endforelse
                                             </select>
                                         </div>
 
@@ -64,8 +74,17 @@
 
                                     <div class="form-group">
                                         <label class="text-secondary">Organismo</label>
-                                        <select name="organizacion" id="idOrganizacionSelect" class="form-control">
-                                            {{-- consultar --}}
+                                        <select name="autoridad" id="idOrganizacionSelect" class="form-control item">
+                                            <option value="" @if ($formato->autoridadId == "")
+                                                selected
+                                            @endif>Seleccionar organismo</option>
+                                            @forelse ($autoridades as $autoridad)
+                                                    <option value="{{ $autoridad->id }}"
+                                                        @if ($autoridad->id == $formato->autoridadId) selected @endif>
+                                                        {{ $autoridad->nombre }}</option>
+                                                @empty
+                                                    <option value="0">No hay autoridades registradas.</option>
+                                                @endforelse
                                         </select>
                                     </div>
 

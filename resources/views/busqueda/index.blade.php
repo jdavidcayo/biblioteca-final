@@ -27,8 +27,8 @@
                                 <td>{{ $resultado->titulo }}</td>
                                 <td class="limitedCell">{!! $resultado->descripcion !!}</td>
                                 <td>
-                                <a href="{{ $resultado->link }}">
-                                    {{-- mostrar Descargar en caso de ser formato--}}
+                                <a href=
+                                    
                                     {{-- 
                                     $tiposModelo = [ 
                                         1 => 'Capsula',
@@ -40,11 +40,33 @@
                                         7 => 'Manual',
                                     ];    
                                     --}}
-                                    @if ( $resultado->tipo == 6)
-                                        Descargar
-                                    @else
-                                        Ver
-                                    @endif
+
+                                    @switch($resultado->tipo)
+                                        @case(1)
+                                            '{{ route('capsula.show', $resultado) }}'
+                                            @break
+                                        @case(2)
+                                            '{{ route('catalogo.show', $resultado) }}'
+                                            @break
+                                        @case(3)
+                                            '{{ route('compendio.show', $resultado) }}'        
+                                            @break
+                                        @case(4)
+                                            '{{ route('folleto.show', $resultado) }}'    
+                                            @break
+                                        @case(5)
+                                            '{{ route('documento.show', $resultado) }}'
+                                            @break
+                                        @case(6)
+                                            '{{ route('formato.show', $resultado) }}'
+                                            @break
+                                        @case(7)
+                                            '{{ route('manual.show', $resultado) }}'
+                                            @break
+                                        @default
+                                            '#'
+                                    @endswitch
+                                > VER MÁS
                                 </a>    
                                 </td>
                             </tr>

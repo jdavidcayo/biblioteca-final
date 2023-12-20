@@ -38,6 +38,17 @@ class DocumentoController extends Controller
         return view('documento.create', compact('autoridades', 'temas'));
     }
 
+    public function show($id)
+    {
+        $documento = Documento::find($id);
+        
+        if (!$documento || $documento->estado == 0) {
+            abort(404);
+        }
+
+        return view('documento.show', compact('documento'));
+    }
+
     public function edit($id)
     {
         $documento = Documento::findOrFail($id);
@@ -61,8 +72,8 @@ class DocumentoController extends Controller
         $documento->fecha = $request->fecha;
         $documento->estado = $request->estado;
         $documento->autorId = $request->user()->id;
-        $documento->autoridadId = $request->autoridadSelect;
-        $documento->temaId = $request->temaSelect;
+        $documento->autoridadId = $request->autoridad;
+        $documento->temaId = $request->tema;
         
         if ($request->hasFile("urlImagen")) {
             $file = $request->file("urlImagen");
@@ -107,8 +118,8 @@ class DocumentoController extends Controller
         $documento->fecha = $request->fecha;
         $documento->estado = $request->estado;
         $documento->autorId = $request->user()->id;
-        $documento->autoridadId = $request->autoridadSelect;
-        $documento->temaId = $request->temaSelect;
+        $documento->autoridadId = $request->autoridad;
+        $documento->temaId = $request->tema;
         
         if ($request->hasFile("urlImagen") && $request->file("urlImagen") != null && $request->file("urlImagen") != "") {
             $file = $request->file("urlImagen");
