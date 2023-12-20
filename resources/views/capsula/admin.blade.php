@@ -21,7 +21,7 @@
     <table class="table table-striped table-hover table-borderless">
         <thead class="p-2 table-primary">
             <tr >
-                <th>ACCIONES</th>
+                <th class="">ACCIONES</th>
                 <th>ESTADO</th>
                 <th>FECHA</th>
                 <th>TITULO</th>
