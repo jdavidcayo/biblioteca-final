@@ -13,13 +13,13 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        $catalogos = Catalogo::paginate(20);
+        $catalogos = Catalogo::where('estado', '1')->paginate(20);
         return view("catalogo.index", compact("catalogos"));
     }
 
     public function admin()
     {
-        $catalogos = Catalogo::paginate(10);
+        $catalogos = Catalogo::paginate(20);
         return view("catalogo.admin", compact("catalogos"));
     }
     /**

@@ -32,7 +32,8 @@ class FiltroCompendioController extends Controller
         if ($anio !== null) {
             $query->where('anio', $anio);
         }
-
+        
+        $query->where('estado', '1');
         $compendios = $query->paginate(20);
 
 

@@ -14,7 +14,7 @@ class FolletoController extends Controller
      */
     public function index()
     {
-        $folletos= Folleto::paginate(20);
+        $folletos= Folleto::where('estado', '1')->paginate(20);
         return view("folleto.index",compact("folletos"));
     }
 

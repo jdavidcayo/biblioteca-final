@@ -14,7 +14,7 @@ class FormatoController extends Controller
      */
     public function index()
     {
-        $formatos = Formato::paginate(20);
+        $formatos = Formato::where('estado', '1')->paginate(20);
         return view("formato.index", compact("formatos"));
     }
 
