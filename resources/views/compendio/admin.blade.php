@@ -19,7 +19,7 @@
         <table class="table table-striped table-hover table-borderless">
             <thead class="p-2 table-primary">
                 <tr>
-                    <th width="150px">ACCIONES</th>
+                    <th class="acciones">ACCIONES</th>
                     <th>ESTADO</th>
                     <th>AÑO</th>
                     <th>AUTOR</th>
