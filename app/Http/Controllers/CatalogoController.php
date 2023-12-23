@@ -13,7 +13,9 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        $catalogos = Catalogo::where('estado', '1')->paginate(20);
+        $catalogos = Catalogo::where('estado', '1')
+        ->orderBy('fecha')
+        ->paginate(20);
         return view("catalogo.index", compact("catalogos"));
     }
 
@@ -36,6 +38,7 @@ class CatalogoController extends Controller
     public function store(Request $request)
     {
         $catalogo = new Catalogo();
+
         $catalogo->titulo = $request->titulo;
         $catalogo->fecha = $request->fecha;
         $catalogo->estado = $request->estado;
@@ -67,9 +70,13 @@ class CatalogoController extends Controller
     
         $catalogo->urlDocumento = "storage/manuales/" . $name;
 
-        }
+        $catalogo->nombreArchivo = $name;
+        
+    }
+    
+    $catalogo->save();
+    
 
-        $catalogo->save();
         return redirect()->route('catalogo.admin');
     }
 
@@ -134,6 +141,8 @@ class CatalogoController extends Controller
             $file->storeAs("public/manuales/" , $name);
     
         $catalogo->urlDocumento = "storage/manuales/" . $name;
+
+        $catalogo->nombreArchivo = $name;
 
         }
 

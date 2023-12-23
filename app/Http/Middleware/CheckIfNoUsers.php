@@ -9,12 +9,12 @@ use App\Models\User;
 class CheckIfNoUsers
 {
 
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (User::count() === 0) {
-            return redirect()->route('register');
+        if (User::count() > 0) {
+            return redirect('/');
         }
 
-        return redirect()->route('login');
+        return $next($request);
     }
 }

@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Models\Manual;
-use App\Models\Usuario;
+
 
 class ManualController extends Controller
 {
 
     public function index()
     {
-        $manuales = Manual::where('estado', '1')->paginate(20);
+        $manuales = Manual::where('estado', '1')
+            ->orderBy('fecha')
+            ->paginate(20);
         return view("manual.index", compact("manuales"));
     }
 
     public function admin() 
     {
-        $manuales = Manual::paginate(20);
+        $manuales = Manual::orderByDesc('created_at')
+            ->paginate(20);
         return view("manual.admin", compact("manuales"));
     }
     /**
@@ -51,7 +52,7 @@ class ManualController extends Controller
             $file->storeAs("public/manuales/" , $name);
     
         $imagePath = storage_path("app/public/manuales/" .$name);
-        $resizedImage = Image::make($imagePath)->fit(320, 320);
+        $resizedImage = Image::make($imagePath)->fit(420, 520);
         $resizedImage->save(storage_path("app/public/manuales/" . $name));        
         $manual->urlImagen = "storage/manuales/" . $name;
 
@@ -70,10 +71,12 @@ class ManualController extends Controller
             $file->storeAs("public/manuales/" , $name);
     
         $manual->urlDocumento = "storage/manuales/" . $name;
-
+        $manual->nombreArchivo = $name;
+        
         }
 
         $manual->save();
+
         return redirect()->route('manual.admin');
     }
 

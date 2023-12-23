@@ -60,7 +60,7 @@ class BusquedaController extends Controller
             ->where('estado', 1)
             ->get()->each(function ($item) {
             $item->tipo = 5;
-            // $item->link = route('documento.show', $item->id);
+            $item->link = route('documento.show', $item->id);
         });
         $resultsFormatos = Formato::where('titulo', 'like', "%$query%")
             ->where('estado', 1)

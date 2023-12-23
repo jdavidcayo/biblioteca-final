@@ -10,8 +10,8 @@
 
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}"> 
-        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
         <!-- Styles -->
         @livewireStyles

@@ -14,7 +14,9 @@ class FormatoController extends Controller
      */
     public function index()
     {
-        $formatos = Formato::where('estado', '1')->paginate(20);
+        $formatos = Formato::where('estado', '1')
+            ->orderBy('fecha')
+            ->paginate(20);
         return view("formato.index", compact("formatos"));
     }
 
@@ -59,16 +61,19 @@ class FormatoController extends Controller
         $documentPath = storage_path("app/public/formatos/" .$name);
                 
         $formato->urlDocumento = "storage/formatos/" . $name;
-
+        
+        $formato->nombreArchivo = $name;
+        
         $extension = $file->getClientOriginalExtension();
         $urlImagenThumb = asset("assets/img/ICONO-Formatos.png");
         $formato->urlImagenThumb = $urlImagenThumb;
-            
-        } else {
-            $formato->urlImagenThumb = asset('assets/img/ICONO-Formatos.png');
-        }
         
+    } else {
+        $formato->urlImagenThumb = asset('assets/img/ICONO-Formatos.png');
+    }
+    
         $formato->save();
+
         return redirect()->route('formato.admin');
     }
 

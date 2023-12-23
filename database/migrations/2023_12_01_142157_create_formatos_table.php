@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('estado')->default(1);
             $table->date('fecha')->nullable();
             $table->text('descripcion')->nullable();
+            $table->string('nombreArchivo')->nullable();
             $table->unsignedInteger('autoridadId')->nullable();
             $table->unsignedInteger('temaId')->nullable();
             $table->timestamps();

@@ -26,4 +26,6 @@ Route::middleware([
         Route::post('/compendio/filtrar', [App\Http\Controllers\FiltroCompendioController::class, 'filtrarDatos'])->name('compendio.filtrar');
         Route::post('/busqueda', [App\Http\Controllers\BusquedaController::class, 'index'])->name('busqueda.index');
         
+        //Estadistica
+        Route::post('/registrar-descarga/{tipoDescarga}/{archivoId}', [ App\Http\Controllers\DescargasController::class,'registrarDescarga' ])->name('registrar.descarga');
     });

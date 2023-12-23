@@ -61,8 +61,8 @@
                         @if ($documento->urlDocumento == null)
                             <button class="btn btn-secondary rounded-pill" disabled>SIN DOCUMENTO</button>
                         @else
-                        <a href="{{ $documento->urlDocumento }}" download>
-                            <button class="btn btn-warning text-white rounded-pill">DESCARGAR</button>
+                        <a href="{{ $documento->urlDocumento }}" data-id="{{ $documento->id }}" data-tipo="documento" download>
+                            <button id="btnDescargar" class="btn btn-warning text-white rounded-pill">DESCARGAR</button>
                         </a>
                         @endif
                     </div>
@@ -78,4 +78,5 @@
         @endsection
     </div>
 </div>
+<script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script>  
 @endsection

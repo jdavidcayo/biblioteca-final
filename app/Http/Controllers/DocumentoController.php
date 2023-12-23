@@ -21,7 +21,6 @@ class DocumentoController extends Controller
         {
             $documentos = Documento::where('autoridadId', $request->autoridadId)->orderByDesc('fecha')->paginate(20);
         } 
-
         return view('documento.index', compact('documentos', 'autoridades'));
     }
 
@@ -103,10 +102,12 @@ class DocumentoController extends Controller
             $file->storeAs("public/documentos/" , $name);
     
         $documento->urlDocumento = "storage/documentos/" . $name;
-
+        $documento->nombreArchivo = $name;
+        
         }
 
         $documento->save();
+
         return redirect()->route('documento.admin');
     }
 

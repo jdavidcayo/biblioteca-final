@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('urlImagen')->nullable();
             $table->string('urlDocumento')->nullable();
             $table->string('descripcion')->nullable();
+            $table->string('nombreArchivo')->nullable();
             $table->date('fecha')->nullable();
             $table->unsignedInteger('estado')->default(1);
             $table->unsignedInteger('autorId');

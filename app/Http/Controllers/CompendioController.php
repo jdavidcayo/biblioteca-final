@@ -6,6 +6,7 @@ use App\Models\Compendio;
 use App\Models\Autoridad;
 use App\Models\Criterio;
 
+
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -46,6 +47,7 @@ class CompendioController extends Controller
     public function store(Request $request)
     {
         $compendio = new Compendio();
+
         $compendio->titulo = $request->titulo;
         $compendio->descripcion = $request->descripcion;
         $compendio->anio = $request->anio;
@@ -81,9 +83,12 @@ class CompendioController extends Controller
             $file->storeAs("public/compendios/", $name);
 
             $compendio->urlDocumento = "storage/compendios/" . $name;
+            
+            $compendio->nombreArchivo = $name;
         }
 
         $compendio->save();
+
         return redirect()->route('compendio.admin');
     }
 

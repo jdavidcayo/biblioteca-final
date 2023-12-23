@@ -15,8 +15,8 @@
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item d-flex flex-col align-items-center justify-content-center ">
                             <p>{{ $formato->titulo }}</p>
-                            <a href="{{ $formato->urlDocumento }}" download>
-                                <button type="button"
+                            <a href="{{ $formato->urlDocumento }}" data-id="{{ $formato->id }}" data-tipo="formato" download>
+                                <button id="btnDescargar" type="button"
                                 class="btn btn-warning text-morado hover:text-white btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>
                         </li>
@@ -32,4 +32,5 @@
         @endsection
         </div>
     </div>
+    <script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script>  
     @endsection

@@ -8,20 +8,20 @@
 
             @forelse ( $manuales as $manual)
             <div class="col-lg-3 col-md-6 mb-4 cardEffect">
-                <div class="card align-items-center border-0" style="width: 100%;">
-                    <p class="text-secondary">{{ $manual->titulo }}</p>
+                <div class="card align-items-center p-2 border-none" >
+                    {{-- <p class="text-secondary"><b>{{ $manual->titulo }}</b></p> --}}
                     <img src="{{ $manual->urlImagen }}" class="" alt="Manual img" width="100px" height="150px">
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item">
-                            <a href="{{ $manual->urlDocumento }}" download>
-                                <button type="button"
-                                class="btn btn-warning text-morado hover:text-white btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
+                            <a href="{{ $manual->urlDocumento }}" data-id="{{ $manual->id }}" data-tipo="manual" download>
+                                <button id="btnDescargar" type="button"
+                                class="btn btnCardManual btnDescargarManual btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>
                         </li>
                         <li class="list-group-item pt-0">
                             <a href="{{ route('manual.show',['manual'=> $manual->id])  }}">
                                 <button type="button" id="btnVerPDF"
-                                    class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
+                                    class="btn btnCardManual btnVerManual btn-outline-primary btn-block btn-sm rounded-pill px-3">
                                     VER EN LÍNEA
                                 </button>
                             </a>
@@ -39,4 +39,5 @@
 
         </div>
     </div>
+    <script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script> 
     @endsection

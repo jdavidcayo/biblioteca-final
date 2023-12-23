@@ -23,8 +23,8 @@
             <div class="d-flex flex-row justify-content-between mb-2">
                 <h3 class="mb-2">{{ $compendio->titulo }}</h3>
 
-                <a href="{{ "../" . $compendio->urlDocumento }}" download="{{ $compendio->titulo . ".pdf" }}">
-                    <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm" >DESCARGAR</button>
+                <a href="{{ "../" . $compendio->urlDocumento }}" data-id="{{ $compendio->id }}" data-tipo="compendio" download>
+                    <button id="btnDescargar" class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm" >DESCARGAR</button>
                 </a>
 
             </div>
@@ -33,4 +33,6 @@
                 <iframe src="{{ asset($compendio->urlDocumento) }}" frameborder="0" width="80%" height="900px"></iframe>
             </div>
         </div>
+
+        <script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script>  
     @endsection

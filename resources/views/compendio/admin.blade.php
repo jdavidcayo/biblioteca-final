@@ -71,7 +71,9 @@
                             @else
                                 <a href="{{ '../' . $compendio->urlDocumento }}"
                                     download="{{ $compendio->titulo . '.pdf' }}">
-                                    Descargar
+                                    <button id="btnDescargar" class="btn btn-outline-primary ">
+                                        Descargar
+                                    </button>
                                 </a>
                             @endif
                         </td>
@@ -133,9 +135,9 @@
         
             link.addEventListener('click', (e)=>{
                 let p = link.previousElementSibling;
-
+                console.log(p);
                 modalTitle.innerHTML = link.parentElement.previousElementSibling.innerHTML;
-                if(p) modalContent.innerHTML = p;
+                if(p) modalContent.innerHTML = p.innerHTML;
                 else modalContent.innerHTML = "<p>No hay sintesis</p>"
             })
 

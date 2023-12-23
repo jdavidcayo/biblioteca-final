@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('fecha')->nullable();
             $table->unsignedInteger('estado')->default(1);
             $table->unsignedInteger('autorId');
+            $table->string('nombreArchivo')->nullable();
             $table->timestamps();
         });
     }

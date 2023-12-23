@@ -151,3 +151,24 @@ th-primary {
 .acciones {
     width: 150px !important;
 }
+
+.btnCardManual {
+    width: 150px !important;
+}
+
+.btnDescargarManual {
+    color: white;
+    background-color: #f13361;
+}
+
+.btnDescargarManual:hover {
+    color: #5d1250;
+    border: 1px solid #5d1250;
+    transform: scale(1.02); 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.btnVerManual:hover {
+    transform: scale(1.02); 
+    transition: transform 0.3s ease-in-out; 
+}

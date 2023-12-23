@@ -13,10 +13,11 @@
                     <img src="{{ $catalogo->urlImagen }}" class="" alt="catalogo img" width="100px" height="150px">
                     <ul class="list-group list-group-flush align-items-center gothamB">
                         <li class="list-group-item">
-                            
-                            <a href="{{ $catalogo->urlDocumento }}" download>
-                                <button type="button"
-                                class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
+                            <a href="{{ $catalogo->urlDocumento }}" data-id="{{ $catalogo->id }}" data-tipo="catalogo" download>
+                                
+                                    <button type="button" id="btnDescargar"
+                                    class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
+                                
                             </a>
                         </li>
                         
@@ -36,9 +37,11 @@
                 <h4>NINGUN CATALOGO POR MOSTRAR</h4>
             @endforelse
             @section('pagination')
-            {{ $catalogos->links('pagination::simple-bootstrap-5') }}
-        @endsection
+                {{ $catalogos->links('pagination::simple-bootstrap-5') }}
+            @endsection
 
         </div>
     </div>
-    @endsection
+
+    <script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script>    
+@endsection

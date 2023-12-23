@@ -21,8 +21,8 @@
         <div class="container">
             <div class="d-flex flex-row justify-content-between mb-2">
                 <h4>{{ $catalogo->titulo }}</h4>
-                <a href="#" download="{{ $catalogo->titulo . ".pdf"}}">
-                    <button class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm" >DESCARGAR</button>
+                <a href="{{ asset($catalogo->urlDocumento) }}" data-id="{{ $catalogo->id }}" data-tipo="catalogo" download>
+                    <button id="btnDescargar" class="btn btn-sm btn-warning gothamB text-white rounded-pill btn-xxsm" >DESCARGAR</button>
                 </a>
             </div>
             <hr>
@@ -30,4 +30,6 @@
                 <iframe src="{{ "../" . $catalogo->urlDocumento }}" frameborder="0" width="80%" height="900px"></iframe>
             </div>
         </div>
+        
+        <script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script>  
     @endsection

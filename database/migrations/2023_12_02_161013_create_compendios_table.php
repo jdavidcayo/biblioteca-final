@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('criterio')->nullable()->foreign('criterio')->references('id')->on('criterios');;
             $table->year('anio')->nullable();
             $table->date('fecha')->nullable();
+            $table->string('nombreArchivo')->nullable();
             $table->unsignedInteger('autorId')->nullable()->foreign('autorId')->references('id')->on('users');
             $table->unsignedInteger('autoridad')->nullable()->foreign('autoridad')->references('id')->on('autoridades');
             $table->unsignedInteger('estado')->default(1);

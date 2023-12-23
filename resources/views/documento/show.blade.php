@@ -43,8 +43,8 @@
                     <tr>
                         <th>Enlace</th>
                         <td>
-                            <a href="{{ asset($documento->urlDocumento); }}" download>
-                                <button type="button"
+                            <a href="{{ asset($documento->urlDocumento); }}" data-id="{{ $documento->id }}" data-tipo="documento" download>
+                                <button id="btnDescargar" type="button"
                                     class="btn btn-warning text-morado hover:text-white btn-block btn-sm rounded-pill px-3">DESCARGAR</button>
                             </a>
                         </td>
@@ -56,5 +56,5 @@
     </div>
 </div>
 
-
+<script src="{{ asset('assets/js/descargasHandler.js')}}" type="module"></script>  
 @endsection
