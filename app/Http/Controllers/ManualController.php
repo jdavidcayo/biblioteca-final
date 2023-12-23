@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Models\Manual;
 
-
 class ManualController extends Controller
 {
 

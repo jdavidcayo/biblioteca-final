@@ -13,9 +13,6 @@ use App\Models\Formato;
 use App\Models\Manual;
 
 
-
-
-
 class BusquedaController extends Controller
 {
     public function index(Request $request) {

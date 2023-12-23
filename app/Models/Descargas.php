@@ -8,6 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Descargas extends Model
 {
     use HasFactory;
-
-
 }
