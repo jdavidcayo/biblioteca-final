@@ -28,4 +28,8 @@ Route::middleware([
         
         //Estadistica
         Route::post('/registrar-descarga/{tipoDescarga}/{archivoId}', [ App\Http\Controllers\DescargasController::class,'registrarDescarga' ])->name('registrar.descarga');
+        Route::post('/estadistica/{filtro}', [App\Http\Controllers\EstadisticaController::class, 'obtenerEstadistica']);
+        Route::post('/estadistica/buscar/usuario', [App\Http\Controllers\EstadisticaController::class, 'buscarUsuario']);
+        
+
     });

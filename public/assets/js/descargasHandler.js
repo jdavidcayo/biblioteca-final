@@ -1,6 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Script cargado...');
 
     document.addEventListener('click', (e) => {
         let idDescarga = -1;
