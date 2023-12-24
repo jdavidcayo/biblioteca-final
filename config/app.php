@@ -173,6 +173,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        
     ])->toArray(),
 
     /*
@@ -187,7 +188,6 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Permission' => Spatie\Permission\PermissionFacade::class,
         'Image' => Intervention\Image\Facades\Image::class
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
