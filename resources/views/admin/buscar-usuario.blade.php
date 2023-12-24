@@ -25,7 +25,7 @@
                     @if ($descargasUsuario->count() > 0)
                         <p>Ultimas descargas del usuario</p>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="font-size: medium;">
                                 <thead>
                                     <tr>
                                         <th>Tipo</th>
@@ -35,13 +35,28 @@
                                 <tbody>
                                     @foreach ($descargasUsuario->take(20) as $index => $descarga)
                                         <tr>
-                                            <td>{{ array_search($descarga->tipo, $tiposDescarga) }}</td>
-                                            <td>{{ $nombresArchivos[$index] }}</td>
+                                            <td style="font-size: small;">
+                                                {{ array_search($descarga->tipo, $tiposDescarga) }}
+                                            </td>
+                                            <td style="font-size: small;">{{ $nombresArchivos[$index] }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        
+
+                        @php
+                            $contadoresTipos = array_fill_keys(array_values($tiposDescarga), 0);
+                        @endphp
+
+                        @foreach ($descargasUsuario as $descarga)
+                            @if (isset($contadoresTipos[$descarga->tipo]))
+                                @php
+                                    $contadoresTipos[$descarga->tipo]++;
+                                @endphp
+                            @endif
+                        @endforeach
                     @else
                         <p>El usuario no ha realizado ninguna descarga.</p>
                     @endif
@@ -51,12 +66,12 @@
             </div>
 
             <div class="col-md-6">
-                <canvas id="descargasChart" width="300" height="300"></canvas>
+                <canvas id="descargasChart" width="300" height="300" style="max-height: 400px"></canvas>
             </div>
         </div>
     </div>
 
-    
+
 @stop
 
 @section('css')
@@ -67,28 +82,34 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        
-        var tiposDescargaLabels = @json(array_keys($tiposDescarga));
-        var descargasCantidad = @json(array_values(
-                $descargasUsuario->pluck('tipo')->countBy()->all()));
-        
-        var coloresTipos = ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9966FF'].slice(0, tiposDescargaLabels.length);
+        @if ($usuarioEncontrado)
 
-        var ctxDescargas = document.getElementById('descargasChart').getContext('2d');
-        var descargasChart = new Chart(ctxDescargas, {
-            type: 'doughnut',
-            data: {
-                labels: tiposDescargaLabels,
-                datasets: [{
-                    data: descargasCantidad,
-                    backgroundColor: coloresTipos,
-                    hoverBackgroundColor: coloresTipos
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
+        var contadoresTipos = {};
+        @foreach ($tiposDescarga as $nombreTipo => $idTipo)
+            contadoresTipos['{{ $nombreTipo }}'] = {{ $contadoresTipos[$idTipo] }};
+        @endforeach
+
+            var ctxDescargas = document.getElementById('descargasChart').getContext('2d');
+            var descargasChart = new Chart(ctxDescargas, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(contadoresTipos),
+                    datasets: [{
+                        data: Object.values(contadoresTipos),
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9966FF'],
+                        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#9966FF']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        @else
+            console.log('Usuario no encontrado. No se generará el gráfico.');
+        @endif
     </script>
+
+
+
 @stop

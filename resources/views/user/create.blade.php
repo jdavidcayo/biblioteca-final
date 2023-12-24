@@ -51,9 +51,9 @@
                                 <div class="form-group">
                                     <label class="text-secondary">Rol</label>
                                     <select name="rolSelect" id="rolSelect" class="form-control item">
-                                        <option value="1">Administrador</option>
-                                        <option value="2">Editor</option>
-                                        <option value="3">Lector</option>
+                                        @foreach ($roles as $rol)
+                                            <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

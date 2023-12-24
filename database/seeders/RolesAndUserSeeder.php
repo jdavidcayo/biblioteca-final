@@ -24,10 +24,12 @@ class RolesAndUserSeeder extends Seeder
         // Crear permisos
         $crearUsuariosPermission = Permission::create(['name' => 'crear usuarios']);
         $crearEntidadesPermission = Permission::create(['name' => 'crear entidades']);
+        $crearEntradasPermission = Permission::create(['name' => 'crear entradas']);
 
 
         // Asignar permisos a roles
-        $adminRole->givePermissionTo([$crearUsuariosPermission, $crearEntidadesPermission]);
+        $adminRole->givePermissionTo([$crearUsuariosPermission, $crearEntidadesPermission, $crearEntradasPermission,]);
+        $editorRole->givePermissionTo([$crearEntradasPermission,]);
 
         // Crear usuario administrador
         $adminUser = User::create([

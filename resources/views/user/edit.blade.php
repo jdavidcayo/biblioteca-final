@@ -43,29 +43,34 @@
                                                 <span id="encriptedId" class="text-secondary"><b> encriptada.</b></span>
 
                                                 <div class="input-group mb-3">
-                                                    <input type="password" name='password' class="form-control" id="inputPwd"
-                                                        placeholder="Contraseña" required value="{{ $usuario->password }}">
-                                                        <span class="input-group-text" id="showIcon" onclick="togglePasswordVisibility()">
-                                                            <i class="fas fa-eye"></i>
+                                                    <input type="password" name='password' class="form-control"
+                                                        id="inputPwd" placeholder="Contraseña" required
+                                                        value="{{ $usuario->password }}">
+                                                    <span class="input-group-text" id="showIcon"
+                                                        onclick="togglePasswordVisibility()">
+                                                        <i class="fas fa-eye"></i>
                                                 </div>
-                                                
 
-                                                <button
-                                                    class="btn btn-sm btn-outline-primary rounded-pill mt-1" id="btnGenerar">GENERAR NUEVA</button>
+
+                                                <button class="btn btn-sm btn-outline-primary rounded-pill mt-1"
+                                                    id="btnGenerar">GENERAR NUEVA</button>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="text-secondary">Rol</label>
                                                 <select name="rolSelect" id="rolSelect" class="form-control item">
-                                                    <option value="1">Administrador</option>
-                                                    <option value="2">Editor</option>
-                                                    <option value="3">Lector</option>
+                                                    @foreach ($roles as $rol)
+                                                        <option value="{{ $rol->id }}"
+                                                            {{ $usuario->hasRole($rol->name) ? 'selected' : '' }}>
+                                                            {{ $rol->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
 
                                         </div>
                                         <div class="box-footer mt20">
-                                            <button type="submit" class="btn btn-primary ">CREAR</button>
+                                            <button type="submit" class="btn btn-primary ">ACTUALIZAR</button>
                                             <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">CANCELAR</a>
                                         </div>
                                     </div>
@@ -83,49 +88,49 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
-    
+
     <link rel="stylesheet" href=" {{ asset('assets/css/styles.css') }}">
 @stop
 
 @section('js')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('btnGenerar').addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            let token = document.querySelector('#formEdit input[name="_token"]').value;
-            document.getElementById('encriptedId').hidden = true;
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('btnGenerar').addEventListener('click', function(e) {
+                e.preventDefault();
 
-            fetch("{{ route('usuario.generatepwd.admin') }}", {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': token,
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.querySelector('#formEdit input[name="password"]').value = data.password;
-            })
-            .catch(error => {
-                console.error('Error al realizar la solicitud Fetch.', error);
+                let token = document.querySelector('#formEdit input[name="_token"]').value;
+                document.getElementById('encriptedId').hidden = true;
+
+                fetch("{{ route('usuario.generatepwd.admin') }}", {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': token,
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector('#formEdit input[name="password"]').value = data
+                        .password;
+                    })
+                    .catch(error => {
+                        console.error('Error al realizar la solicitud Fetch.', error);
+                    });
             });
         });
-    });
-    
-</script>    
+    </script>
 
-<script>
-    function togglePasswordVisibility() {
-        var passwordField = document.getElementById('inputPwd');
-        var showIcon = document.getElementById('showIcon');
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('inputPwd');
+            var showIcon = document.getElementById('showIcon');
 
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            showIcon.innerHTML = '<i class="fas fa-eye-slash"></i>';
-        } else {
-            passwordField.type = 'password';
-            showIcon.innerHTML = '<i class="fas fa-eye"></i>';
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                showIcon.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                passwordField.type = 'password';
+                showIcon.innerHTML = '<i class="fas fa-eye"></i>';
+            }
         }
-    }
-</script>
+    </script>
 @stop

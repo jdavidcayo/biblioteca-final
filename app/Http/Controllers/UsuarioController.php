@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
 {
@@ -12,7 +13,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(20);
+        $users = User::orderBy('created_at')
+            ->paginate(20);
         return view('user.admin', compact('users'));
     }
 
@@ -21,7 +23,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $roles = Role::all();
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -29,13 +32,20 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        user::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            // 'rol' => $request->rol,
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
 
-        ]);
+        $user->save();
+
+        $roleId = $request->input('rolSelect');
+        $role = Role::find($roleId);
+
+        if ($role) {
+            $user->assignRole($role);
+        }
+
         return redirect()->route('usuarios.index');
     }
 
@@ -53,7 +63,8 @@ class UsuarioController extends Controller
     public function edit(string $id)
     {
         $usuario = User::find($id);
-        return view('user.edit', compact('usuario'));
+        $roles = Role::all();
+        return view('user.edit', compact('usuario', 'roles'));
     }
 
     /**
@@ -67,6 +78,14 @@ class UsuarioController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+
+        $roleId = $request->input('rolSelect');
+        $role = Role::find($roleId);
+
+        if ($role) {
+            $user->roles()->sync([$role->id]);
+        }
+
         return redirect()->route('usuarios.index');
     }
 
@@ -84,13 +103,12 @@ class UsuarioController extends Controller
     {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%';
         $password = '';
-        
+
         for ($i = 0; $i < 12; $i++) {
             $index = rand(0, strlen($characters) - 1);
             $password .= $characters[$index];
         }
-        
+
         return response()->json(['password' => $password]);
     }
-    
 }

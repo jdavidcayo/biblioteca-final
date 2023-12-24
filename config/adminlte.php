@@ -296,65 +296,78 @@ return [
             'text' => 'USUARIOS',
             'url' => 'admin/usuarios',
             'icon' => 'fas fa-fw fa-file',
+            'can' => 'crear usuarios',
         ],
         [
             'text' => 'MANUALES',
             'url'  => 'admin/manuales',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text' => 'FOLLETOS',
             'url'  => 'admin/folletos',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text' => 'FORMATOS',
             'url'  => 'admin/formatos',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text' => 'CATÁLOGOS',
             'url'  => 'admin/catalogos',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text' => 'DOCUMENTOS',
             'url'  => 'admin/documentos',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text' => 'COMPENDIOS',
             'url'  => 'admin/compendio',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text' => 'CAPSULAS',
             'url'  => 'admin/capsulas',
             'icon' => 'fas fa-fw fa-file',
+            'can'     => 'crear entradas',
         ],
         [
             'text'    => 'ENTIDADES',
             'icon'    => 'fas fa-database',
+            'can'     => 'crear entidades',
             'submenu' => [
                 [
                     'text' => 'Autoridades',
                     'url'  => 'admin/autoridades',
                     'icon' => 'fas fa-file',
+                    'can'     => 'crear entidades',
                 ],
                 [
                     'text' => 'Temas',
                     'url'  => 'admin/temas',
                     'icon' => 'fas fa-file',
+                    'can'     => 'crear entidades',
                 ],
                 [
                     'text' => 'Áreas',
                     'url'  => 'admin/areas',
                     'icon' => 'fas fa-file',
+                    'can'     => 'crear entidades',
                 ],
                 [
                     'text' => 'Criterios',
                     'url'  => 'admin/criterio',
                     'icon' => 'fas fa-file',
+                    'can'     => 'crear entidades',
                 ],
             ]
         ]
