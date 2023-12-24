@@ -13,7 +13,6 @@
                 <form class="form d-flex flex-row justify-content-between " action="/estadistica/buscar/usuario" method="POST">
                     @method('POST')
                     @csrf
-                    {{-- <p class="mr-2 pt-2 " width="200px">Filtrar por usuario</p> --}}
                     <input class="form-control mr-2" type="text" placeholder="Filtrar por email" name="correo">
                     <button class="form-control btn btn-primary " type="submit">Buscar</button>
                 </form>
