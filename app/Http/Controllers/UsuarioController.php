@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use App\Mail\CredencialesEmail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class UsuarioController extends Controller
 {
@@ -13,7 +17,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at')
+        $users = User::orderByDesc('created_at')
             ->paginate(20);
         return view('user.admin', compact('users'));
     }
@@ -36,6 +40,7 @@ class UsuarioController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $pwd = $request->password;
 
         $user->save();
 
@@ -45,6 +50,9 @@ class UsuarioController extends Controller
         if ($role) {
             $user->assignRole($role);
         }
+
+        Mail::to($user->email)->send(new CredencialesEmail($user, $pwd));
+
 
         return redirect()->route('usuarios.index');
     }
