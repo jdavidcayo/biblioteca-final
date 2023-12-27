@@ -172,8 +172,8 @@
             const usuariosDescargas = dataUsuarios.usuarioDescargas;
             const usuariosLecturas = dataUsuarios.usuarioLecturas;
 
-            console.log(usuariosDescargas);
-            console.log(usuariosLecturas);
+            // console.log(usuariosDescargas);
+            // console.log(usuariosLecturas);
 
             const nombresDescargas = usuariosDescargas.map(usuario => usuario.usuarioNombre);
             const descargas = usuariosDescargas.map(usuario => usuario.totalDescargas);

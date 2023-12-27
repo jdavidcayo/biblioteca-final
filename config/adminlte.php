@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<strong>Biblioteca</strong>',
+    'logo' => 'Biblioteca',
     'logo_img' => 'assets/img/Logo-IEEG.png',
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
@@ -295,49 +295,49 @@ return [
         [  
             'text' => 'USUARIOS',
             'url' => 'admin/usuarios',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => "fas fa-solid fa-users",
             'can' => 'crear usuarios',
         ],
         [
             'text' => 'MANUALES',
             'url'  => 'admin/manuales',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-solid fa-book',
             'can'     => 'crear entradas',
         ],
         [
             'text' => 'FOLLETOS',
             'url'  => 'admin/folletos',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-solid fa-map',
             'can'     => 'crear entradas',
         ],
         [
             'text' => 'FORMATOS',
             'url'  => 'admin/formatos',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-solid fa-file-invoice',
             'can'     => 'crear entradas',
         ],
         [
             'text' => 'CATÁLOGOS',
             'url'  => 'admin/catalogos',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-regular fa-file-image',
             'can'     => 'crear entradas',
         ],
         [
             'text' => 'DOCUMENTOS',
             'url'  => 'admin/documentos',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-solid fa-file-signature',
             'can'     => 'crear entradas',
         ],
         [
             'text' => 'COMPENDIOS',
             'url'  => 'admin/compendio',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-solid fa-scroll',
             'can'     => 'crear entradas',
         ],
         [
             'text' => 'CAPSULAS',
             'url'  => 'admin/capsulas',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa-solid fa-video',
             'can'     => 'crear entradas',
         ],
         [

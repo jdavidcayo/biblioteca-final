@@ -172,3 +172,19 @@ th-primary {
     transform: scale(1.02); 
     transition: transform 0.3s ease-in-out; 
 }
+
+.ico-user {
+    background-color: #5D1250;
+    color: white;
+    width: 20px;
+    height: 20px;
+    
+}
+
+.manualesIco {
+    background-color: white;
+    color: white;
+    width: 25px;
+    height: 25px;
+    background-image: url(../img/ICONO-Manuales.png);
+}

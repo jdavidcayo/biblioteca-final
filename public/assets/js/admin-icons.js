@@ -1,8 +1,17 @@
-let userName = document.querySelector("body > div > nav > ul.navbar-nav.ml-auto > li > a > span")
 
-console.log(userName.innerHTML);
+// let items = document.querySelectorAll("body > div > aside > div > nav > ul > li > a > i");
 
-userName.innerHTML = 'Hola! <b>' + userName.textContent + '</b>' ;
+// items[0].classList = [];
+// manualesIco = document.createElement('span');
+// manualesIco.classList.add('manualesIco');
+// manualesIco.textContent = " ";
+
+
+// items[0].appendChild(manualesIco);
+
+// console.log(items);
+
+
 
 
 
