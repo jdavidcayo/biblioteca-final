@@ -9,7 +9,7 @@ class AreaController extends Controller
 {
     public function index()
     {
-        $areas = Area::orderBtDesc('created_at')
+        $areas = Area::orderByDesc('created_at')
             ->paginate(20);
         return view('area.admin', compact('areas'));
     }
