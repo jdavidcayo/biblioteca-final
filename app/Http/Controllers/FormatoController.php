@@ -22,7 +22,8 @@ class FormatoController extends Controller
 
     public function admin()
     {
-        $formatos = Formato::paginate(20);
+        $formatos = Formato::orderByDesc('created_at')
+            ->paginate(20);
         return view("formato.admin", compact("formatos"));
     }
 

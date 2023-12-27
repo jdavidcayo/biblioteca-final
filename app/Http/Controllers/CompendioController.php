@@ -28,7 +28,8 @@ class CompendioController extends Controller
     }
     public function admin()
     {
-        $compendios = Compendio::paginate(20);
+        $compendios = Compendio::orderByDesc('created_at')
+            ->paginate(20);
         return view('compendio.admin', compact('compendios'));
     }
     /**

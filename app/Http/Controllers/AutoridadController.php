@@ -9,7 +9,8 @@ class AutoridadController extends Controller
 {
     public function index()
     {
-        $autoridades = Autoridad::paginate(20);
+        $autoridades = Autoridad::orderByDesc('created_at')
+            ->paginate(20);
         return view('autoridad.admin', compact('autoridades'));
     }
 

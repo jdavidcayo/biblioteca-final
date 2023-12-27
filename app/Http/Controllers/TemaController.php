@@ -9,7 +9,8 @@ class TemaController extends Controller
 {
     public function index()
     {
-        $temas = Tema::paginate(20);
+        $temas = Tema::orderByDesc('created_at')
+            ->paginate(20);
         return view('tema.admin', compact('temas'));
     }
 

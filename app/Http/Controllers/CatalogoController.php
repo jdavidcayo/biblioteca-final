@@ -14,14 +14,15 @@ class CatalogoController extends Controller
     public function index()
     {
         $catalogos = Catalogo::where('estado', '1')
-        ->orderBy('fecha')
+        ->orderByDesc('fecha')
         ->paginate(20);
         return view("catalogo.index", compact("catalogos"));
     }
 
     public function admin()
     {
-        $catalogos = Catalogo::paginate(20);
+        $catalogos = Catalogo::orderByDesc('created_at')
+            ->paginate(20);
         return view("catalogo.admin", compact("catalogos"));
     }
     /**

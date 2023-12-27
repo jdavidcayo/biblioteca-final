@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Capsula;
+
 use App\Models\Folleto;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -14,13 +14,16 @@ class FolletoController extends Controller
      */
     public function index()
     {
-        $folletos= Folleto::where('estado', '1')->paginate(20);
+        $folletos= Folleto::where('estado', '1')
+            ->orderByDesc('fecha')
+            ->paginate(20);
         return view("folleto.index",compact("folletos"));
     }
 
     public function admin()
     {
-        $folletos= Folleto::paginate(20);
+        $folletos= Folleto::orderByDesc('created_at')
+            ->paginate(20);
         return view("folleto.admin",compact("folletos"));
     }
 

@@ -9,7 +9,8 @@ class CriterioController extends Controller
 {
     public function index()
     {
-        $criterios = Criterio::paginate(20);
+        $criterios = Criterio::orderByDesc('created_at')
+            ->paginate(20);
         return view('criterio.admin', compact('criterios'));
     }
 

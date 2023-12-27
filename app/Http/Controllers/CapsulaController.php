@@ -15,12 +15,15 @@ class CapsulaController extends Controller
 
     public function index()
     {
-        $capsulas = Capsula::where('estado', '1')->paginate(20);
+        $capsulas = Capsula::where('estado', '1')
+            ->orderByDesc('fecha')
+            ->paginate(20);
         return view('capsula.index', compact('capsulas'));
     }
 
     public function admin(){
-        $capsulas = Capsula::paginate(20);
+        $capsulas = Capsula::orderByDesc('created_at')
+            ->paginate(20);
         return view('capsula.admin', compact('capsulas'));
     }
 
