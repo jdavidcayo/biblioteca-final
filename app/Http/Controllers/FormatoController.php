@@ -140,6 +140,9 @@ class FormatoController extends Controller
     public function show(string $id)
     {
         $formato = Formato::find($id);
+        if (!$formato) {
+            return abort(404);
+        }
         return view('formato.show', compact('formato'));
     }
 }

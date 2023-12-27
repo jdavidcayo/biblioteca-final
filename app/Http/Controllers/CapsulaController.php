@@ -35,6 +35,9 @@ class CapsulaController extends Controller
     public function show($id)
     {
         $capsula = Capsula::find($id);
+        if (!$capsula) {
+            return abort(404);
+        }
         return view('capsula.show', compact('capsula'));
     }
 
