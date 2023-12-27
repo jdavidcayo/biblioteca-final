@@ -15,6 +15,9 @@
             'formatos' => 4,
             'manuales' => 5,
         ];
+
+        $contadoresTipos = array_fill_keys(array_values($tiposDescarga), 0);
+                        
     @endphp
     <div class="container">
         <div class="row">
@@ -46,9 +49,7 @@
                         </div>
                         
 
-                        @php
-                            $contadoresTipos = array_fill_keys(array_values($tiposDescarga), 0);
-                        @endphp
+                        
 
                         @foreach ($descargasUsuario as $descarga)
                             @if (isset($contadoresTipos[$descarga->tipo]))

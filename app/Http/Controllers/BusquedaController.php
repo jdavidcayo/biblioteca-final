@@ -72,7 +72,6 @@ class BusquedaController extends Controller
             $item->link = route('manual.show', $item->id);
         });
 
-        
         $resultados = $resultsCapsulas
                         ->merge($resultsCatalogos)
                         ->merge($resultsCompendios)
