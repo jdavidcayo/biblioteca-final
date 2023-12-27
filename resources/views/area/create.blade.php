@@ -25,13 +25,13 @@
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Nombre</label>
-                                    <input type="text" name='nombre' class="form-control" placeholder="Nombre de area" required>
+                                    <input type="text" name='nombre' class="form-control" placeholder="Nombre de area" maxlength="254"  required>
                                 </div>
                                 
                                 <div class="form-group">
                                     
                                         <label class="text-secondary">Descripción</label>
-                                        <input type="text" name='descripcion' class="form-control" placeholder="Descripción">
+                                        <input type="text" name='descripcion' class="form-control" placeholder="Descripción" maxlength="254">
                                 </div>
                                 
 

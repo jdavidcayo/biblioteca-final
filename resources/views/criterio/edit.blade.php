@@ -26,14 +26,14 @@
                                     <div class="form-group">
                                         <label class="text-secondary">Criterio</label>
                                         <input type="text" name='nombre' class="form-control"
-                                            placeholder="Nombre de autoridad" required value="{{ $criterio->nombre }}">
+                                            placeholder="Nombre de autoridad" required maxlength="254" value="{{ $criterio->nombre }}">
                                     </div>
 
                                     <div class="form-group">
 
                                         <label class="text-secondary">Descripción</label>
                                         <input type="text" name='descripcion' class="form-control"
-                                            placeholder="Descripción" value="{{ $criterio->descripcion }}">
+                                            placeholder="Descripción" maxlength="254" value="{{ $criterio->descripcion }}">
 
                                     </div>
 

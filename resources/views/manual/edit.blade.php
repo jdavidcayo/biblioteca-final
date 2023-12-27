@@ -24,7 +24,7 @@
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Titulo</label>
-                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" required value="{{$manual->titulo}}">
+                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" maxlength="254" required value="{{$manual->titulo}}">
                                 </div>
                                 
                                 <div class="form-group d-flex flex-col justify-content-between mt-4">

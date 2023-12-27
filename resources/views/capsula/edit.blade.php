@@ -26,7 +26,7 @@
                                     <div class="form-group">
                                         <label class="text-secondary">Titulo</label>
                                         <input type="text" name='titulo' class="form-control" placeholder="Titulo"
-                                            required value="{{ $capsula->titulo }}">
+                                            required value="{{ $capsula->titulo }}" maxlength="254">
                                     </div>
 
                                     <div class="form-group">
@@ -61,7 +61,7 @@
 
                                     <div class="form-group">
                                         <label class="text-secondary">Enlace</label>
-                                        <input type="text" name='url' class="form-control" placeholder="Url"
+                                        <input type="text" name='url' class="form-control" placeholder="Iframe"
                                             value="{{ $capsula->url }}">
                                     </div>
 

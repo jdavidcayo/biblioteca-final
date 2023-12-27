@@ -25,7 +25,7 @@
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Titulo</label>
-                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" required>
+                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo"  maxlength="254" required>
                                 </div>
                                 
                                 <div class="form-group d-flex flex-col justify-content-between mt-4">

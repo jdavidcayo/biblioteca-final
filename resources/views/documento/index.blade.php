@@ -37,6 +37,8 @@
                 <li class="list-inline-item">
                     <button class="btn btn-light p-2">OTROS</button>
                 </li> --}}
+
+                {{-- CREACION DE AUTORIDADES POR PARTE DE ADMIN --}}
             </ul>
         </div>
 

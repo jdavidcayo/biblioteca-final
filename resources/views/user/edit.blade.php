@@ -29,13 +29,13 @@
                                             <div class="form-group">
                                                 <label class="text-secondary">Nombre</label>
                                                 <input type="text" name='name' class="form-control"
-                                                    placeholder="Nombre" required value="{{ $usuario->name }}">
+                                                    placeholder="Nombre" required value="{{ $usuario->name }}" maxlength="254">
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="text-secondary">Email</label>
                                                 <input type="email" name='email' class="form-control"
-                                                    placeholder="Email" required value="{{ $usuario->email }}">
+                                                    placeholder="Email" required value="{{ $usuario->email }}" maxlength="254">
                                             </div>
 
                                             <div class="form-group">
@@ -45,7 +45,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="password" name='password' class="form-control"
                                                         id="inputPwd" placeholder="Contraseña" required
-                                                        value="{{ $usuario->password }}">
+                                                        value="{{ $usuario->password }}" maxlength="254">
                                                     <span class="input-group-text" id="showIcon"
                                                         onclick="togglePasswordVisibility()">
                                                         <i class="fas fa-eye"></i>

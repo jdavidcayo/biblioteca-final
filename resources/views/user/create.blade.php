@@ -25,12 +25,12 @@
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Nombre</label>
-                                    <input type="text" name='name' class="form-control" placeholder="Nombre" required>
+                                    <input type="text" name='name' class="form-control" placeholder="Nombre" maxlength="254" required>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Email</label>
-                                    <input type="email" name='email' class="form-control" placeholder="Email" required>
+                                    <input type="email" name='email' class="form-control" placeholder="Email" maxlength="254" required>
                                 </div>
                                 
                                 <div class="form-group">
@@ -38,7 +38,7 @@
                                     
 
                                     <div class="input-group mb-3">
-                                        <input type="password" name='password' class="form-control" id="inputPwd"
+                                        <input type="password" name='password' class="form-control" maxlength="254" id="inputPwd"
                                             placeholder="Contraseña" required >
                                             <span class="input-group-text" id="showIcon" onclick="togglePasswordVisibility()">
                                                 <i class="fas fa-eye"></i>

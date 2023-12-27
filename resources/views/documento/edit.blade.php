@@ -25,7 +25,7 @@
 
                                     <div class="form-group">
                                         <label class="text-secondary">Titulo</label>
-                                        <input type="text" name='titulo' class="form-control" placeholder="Titulo" value="{{ $documento->titulo }}"
+                                        <input type="text" name='titulo' class="form-control" placeholder="Titulo" value="{{ $documento->titulo }}" maxlength="254"
                                             required>
                                     </div>
 

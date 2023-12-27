@@ -13,7 +13,7 @@
                 <form class="form d-flex flex-row justify-content-between " action="/estadistica/buscar/usuario" method="POST">
                     @method('POST')
                     @csrf
-                    <input class="form-control mr-2" type="text" placeholder="Filtrar por email" name="correo">
+                    <input class="form-control mr-2" type="text" placeholder="Filtrar por email" name="correo" maxlength="254">
                     <button class="form-control btn btn-primary " type="submit">Buscar</button>
                 </form>
             </div>
@@ -171,9 +171,6 @@
         function mostrarDataUsuariosDescargasLecturas(dataUsuarios) {
             const usuariosDescargas = dataUsuarios.usuarioDescargas;
             const usuariosLecturas = dataUsuarios.usuarioLecturas;
-
-            // console.log(usuariosDescargas);
-            // console.log(usuariosLecturas);
 
             const nombresDescargas = usuariosDescargas.map(usuario => usuario.usuarioNombre);
             const descargas = usuariosDescargas.map(usuario => usuario.totalDescargas);

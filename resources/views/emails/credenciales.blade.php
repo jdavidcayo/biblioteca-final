@@ -1,3 +1,5 @@
+<h2>BIBLIOTECA DIGITAL</h2>
+<hr>
 <p>Hola {{ $usuario->name }},</p>
 <p>Tus credenciales de inicio de sesión son:</p>
 <ul>

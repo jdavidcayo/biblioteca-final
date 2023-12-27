@@ -37,7 +37,7 @@
                                         <div class="form-group ">
                                             <label class="text-secondary">Identificación</label>
                                             <input type="text" name='titulo' class="form-control"
-                                                placeholder="Identificación" required value="{{ $compendio->titulo }}">
+                                                placeholder="Identificación" maxlength="254" required value="{{ $compendio->titulo }}">
                                         </div>
 
                                     </div>

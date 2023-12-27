@@ -39,7 +39,7 @@
                                         <div class="form-group ">
                                             <label class="text-secondary">Identificación</label>
                                             <input type="text" name='titulo' class="form-control"
-                                                placeholder="Identificación" required>
+                                                placeholder="Identificación" maxlength="254" required>
                                         </div>
 
                                     </div>

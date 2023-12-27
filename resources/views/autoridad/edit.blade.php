@@ -26,14 +26,14 @@
                                     <div class="form-group">
                                         <label class="text-secondary">Nombre</label>
                                         <input type="text" name='nombre' class="form-control"
-                                            placeholder="Nombre de autoridad" required value="{{ $autoridad->nombre }}">
+                                            placeholder="Nombre de autoridad" maxlength="254" required value="{{ $autoridad->nombre }}">
                                     </div>
 
                                     <div class="form-group">
 
                                         <label class="text-secondary">Descripción</label>
                                         <input type="text" name='descripcion' class="form-control"
-                                            placeholder="Descripción" value="{{ $autoridad->descripcion }}" require>
+                                            placeholder="Descripción" maxlength="254" value="{{ $autoridad->descripcion }}" require>
 
                                     </div>
 

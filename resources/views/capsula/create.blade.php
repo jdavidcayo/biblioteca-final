@@ -25,7 +25,7 @@
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Titulo</label>
-                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" required>
+                                    <input type="text" name='titulo' class="form-control" placeholder="Titulo" maxlength="254" required>
                                 </div>
                                 
                                 <div class="form-group">
@@ -54,7 +54,7 @@
                                 
                                 <div class="form-group">
                                     <label class="text-secondary">Enlace</label>
-                                    <input type="text" name='url' class="form-control" placeholder="Url">
+                                    <input type="text" name='url' class="form-control" placeholder="Iframe">
                                 </div>
                             </div>
                             <div class="box-footer mt20">

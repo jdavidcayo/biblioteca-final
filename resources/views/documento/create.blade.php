@@ -27,7 +27,7 @@
                                     <div class="form-group">
                                         <label class="text-secondary">Titulo</label>
                                         <input type="text" name='titulo' class="form-control" placeholder="Titulo"
-                                            required>
+                                        maxlength="254" required>
                                     </div>
 
                                     <div class="form-group">

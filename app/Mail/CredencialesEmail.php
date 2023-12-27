@@ -31,7 +31,6 @@ class CredencialesEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            
             subject: 'Credenciales Email',
         );
     }
