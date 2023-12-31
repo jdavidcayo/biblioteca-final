@@ -5,7 +5,7 @@
         <h3 class="text-secondary pt-4">MANUALES</h3>
     </div>
     <div class="container d-flex flex-row justify-content-between ">
-        <div class="d-flex flex-row mt-2 ml-4">
+        <div class="d-flex flex-row mt-4 ml-4">
             <a href="{{ route('manual.index') }}" class="d-flex flex-row">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ce7386" class="bi bi-grid-fill"
                     viewBox="0 0 16 16">
