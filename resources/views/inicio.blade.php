@@ -156,12 +156,13 @@
     @if (count($capsulas) == 0)
         {{-- No hay capsulas --}}
     @else
-        <div id="carousel" class="carousel slide carousel-fade px-lg-5 my-2 d-flex align-items-center ">
+        <div id="carousel" class="carousel slide carousel-fade px-lg-5 py-2 d-flex align-items-center ">
             <div class="carousel-inner mx-lg-5">
 
                 @foreach ($capsulas as $capsula)
                     <div class="carousel-item @if ($loop->first) active @endif">
                         <div class="card p-5 border-0">
+                            <div class="mb-2 fw-bold text-secondary">CÁPSULAS INFORMATIVAS</div>
                             <div class="row">
 
                                 <div class="col-md-6">
@@ -178,6 +179,14 @@
                                         <p class="card-text"><small class="text-muted">Octubre 19, 2023</small></p>
                                     </div>
                                 </div>
+                                <div class="container d-flex flex-column  align-items-center mt-10">
+                                    <a href="{{ route('capsula.index') }}">
+                                        <button type="button" id="irACapsulas"
+                                            class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
+                                            VER MÁS
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -185,11 +194,11 @@
 
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark " aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon bg-cover" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon bg-cover" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button>
         </div>
@@ -215,14 +224,7 @@
 
         </div>
 
-        <div class="container d-flex flex-column  align-items-center mb-6">
-            <a href="{{ route('capsula.index') }}">
-                <button type="button" id="irACapsulas"
-                    class="btn btn-outline-primary btn-block btn-sm rounded-pill px-3">
-                    VER MÁS
-                </button>
-            </a>
-        </div>
+
     @endif
 
 

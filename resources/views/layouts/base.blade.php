@@ -48,10 +48,11 @@
         </main>
         <!-- Footer Section -->
         <footer class="bg-crema text-secondary py-3 text-center">
-            <p>&copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}IEEG 2018 - 800 433 4486 - Carretera
-                Guanajuato Puentecillas km. 2 + 767, Colonia Puentecillas - C.P. 36263 - Guanajuato, Gto. - Conmutador
-                (473) 735-3000.
-            </p>
+            <div class="container">
+                <p class="mb-0 d-md-inline-block">
+                    &copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}IEEG 2018 - 800 433 4486 - Carretera Guanajuato Puentecillas km. 2 + 767, Colonia Puentecillas - C.P. 36263 - Guanajuato, Gto. - Conmutador (473) 735-3000.
+                </p>
+            </div>
         </footer>
     </div>
 
